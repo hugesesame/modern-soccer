@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>現代サッカー戦術ガイド</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green-dark: #1a6b2a;
+      --green-mid: #2d8a40;
+      --green-light: #4caf63;
+      --green-pale: #e8f5e9;
+      --accent: #f5a623;
+      --accent-dark: #e8920a;
+      --white: #ffffff;
+      --text-dark: #1a2a1e;
+      --text-mid: #3d5a42;
+      --text-light: #6b8f71;
+      --shadow: rgba(26, 107, 42, 0.15);
+    }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      background: #f0f7f1;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-light) 100%);
+      color: white;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='2'/%3E%3Cpath d='M30 2 L30 58 M2 30 L58 30' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+    }
+
+    .header-inner {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 24px 48px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .header-ball {
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .header-text p {
+      margin-top: 12px;
+      font-size: 1rem;
+      opacity: 0.88;
+      max-width: 480px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--green-dark);
+      border-bottom: 3px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 14px 16px;
+      white-space: nowrap;
+      transition: color 0.2s, border-bottom 0.2s;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+    }
+
+    nav a:hover {
+      color: white;
+      border-bottom-color: var(--accent);
+    }
+
+    /* ─── LAYOUT ─── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    section {
+      margin-bottom: 64px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .section-number {
+      background: var(--green-mid);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 4px;
+    }
+
+    /* ─── CARDS ─── */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 20px var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card-sm {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 14px var(--shadow);
+      border-left: 4px solid var(--green-light);
+    }
+
+    .card-sm h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+
+    .card-sm p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    .card-sm.accent { border-left-color: var(--accent); }
+    .card-sm.attack { border-left-color: #e53935; }
+    .card-sm.defend { border-left-color: #1565c0; }
+
+    /* ─── PITCH SVG WRAPPER ─── */
+    .pitch-wrap {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px var(--shadow);
+      overflow: hidden;
+    }
+
+    .pitch-wrap svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ─── FORMATION GRID ─── */
+    .formation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .formation-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 16px var(--shadow);
+      text-align: center;
+    }
+
+    .formation-card h3 {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+
+    .formation-card .tag {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+
+    .formation-card p {
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      text-align: left;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* ─── TACTICS TABLE ─── */
+    .tactic-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .tactic-row { grid-template-columns: 1fr; }
+    }
+
+    .tactic-box {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 12px var(--shadow);
+    }
+
+    .tactic-box.attack-box { border-top: 4px solid #e53935; }
+    .tactic-box.defend-box { border-top: 4px solid #1565c0; }
+
+    .tactic-box h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .attack-box h3 { color: #c62828; }
+    .defend-box h3 { color: #0d47a1; }
+
+    .tactic-box p {
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    .label-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .pill-attack { background: #ffebee; color: #c62828; }
+    .pill-defend { background: #e3f2fd; color: #0d47a1; }
+    .pill-mid { background: #fff3e0; color: #e65100; }
+
+    /* ─── POSITION LEGEND ─── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--text-mid);
+    }
+
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── STEP LIST ─── */
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: white;
+      border-radius: 10px;
+      padding: 14px 18px;
+      box-shadow: 0 2px 10px var(--shadow);
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+
+    .step-num {
+      background: var(--green-mid);
+      color: white;
+      font-weight: 800;
+      font-size: 0.8rem;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── TERMS ─── */
+    .term-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .term-item {
+      background: white;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .term-item dt {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+
+    .term-item dd {
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+    }
+
+    /* ─── INTRO BOX ─── */
+    .intro-box {
+      background: linear-gradient(135deg, var(--green-pale) 0%, #ffffff 100%);
+      border: 2px solid var(--green-light);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 48px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .intro-icon { font-size: 2.4rem; flex-shrink: 0; }
+
+    .intro-box p {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    .intro-box strong { color: var(--green-dark); }
+
+    /* ─── COLUMN BOX ─── */
+    .col-box {
+      background: #fffef5;
+      border-left: 5px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+      padding: 22px 26px;
+      margin: 32px 0 48px;
+      box-shadow: 0 2px 14px rgba(245,166,35,0.13);
+      position: relative;
+    }
+
+    .col-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      background: #fff3cd;
+      border: 1px solid #f5c842;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    .col-box h4 {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .col-box p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    .col-box em {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    /* ─── HIGHLIGHT ─── */
+    .highlight-bar {
+      background: linear-gradient(90deg, var(--green-pale), #fff);
+      border-left: 5px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 20px;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="header-inner">
+    <div class="header-ball">
+      <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="45" r="42" fill="white" opacity="0.95"/>
+        <!-- サッカーボール模様 -->
+        <polygon points="45,10 55,26 71,20 68,38 82,48 68,58 71,76 55,70 45,86 35,70 19,76 22,58 8,48 22,38 19,20 35,26" fill="none" stroke="#1a6b2a" stroke-width="1.5" opacity="0.15"/>
+        <polygon points="45,18 52,30 65,25 63,38 74,46 63,54 65,67 52,62 45,74 38,62 25,67 27,54 16,46 27,38 25,25 38,30" fill="#1a2a1e" opacity="0.08"/>
+        <!-- 中央の五角形 -->
+        <polygon points="45,28 56,36 52,49 38,49 34,36" fill="#1a2a1e" opacity="0.7"/>
+        <polygon points="45,28 34,36 22,30 22,18 34,14" fill="#1a2a1e" opacity="0.3"/>
+        <polygon points="45,28 56,36 68,30 68,18 56,14" fill="#1a2a1e" opacity="0.3"/>
+        <polygon points="52,49 56,62 45,68 34,62 38,49" fill="#1a2a1e" opacity="0.3"/>
+        <polygon points="52,49 68,48 76,60 68,70 56,62" fill="#1a2a1e" opacity="0.15"/>
+        <polygon points="38,49 22,48 14,60 22,70 34,62" fill="#1a2a1e" opacity="0.15"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <span class="badge">Beginner's Guide</span>
+      <h1>現代サッカー<br>戦術ガイド</h1>
+      <p>攻め方・守り方・ポジション名まで、サッカーを初めて知る人にもわかりやすく解説します。</p>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#basics">基本ルール</a>
+    <a href="#positions">ポジション</a>
+    <a href="#formations">フォーメーション</a>
+    <a href="#attack">攻め方</a>
+    <a href="#defense">守り方</a>
+    <a href="#modern">現代戦術</a>
+    <a href="#pos-names">今風のポジション名</a>
+    <a href="#terms">用語集</a>
+  </div>
+</nav>
+
+<!-- ══════════ MAIN ══════════ -->
+<main>
+
+  <!-- イントロ -->
+  <div class="intro-box">
+    <div class="intro-icon">⚽</div>
+    <p>
+      サッカーは<strong>11人 vs 11人</strong>でボールを相手のゴールに入れ合うスポーツです。<br>
+      このガイドでは「なぜその場所に立つのか」「なぜそのプレーをするのか」という<strong>戦術的な理由</strong>を、図解とともにやさしく説明します。
+    </p>
+  </div>
+
+  <!-- ══ 1. 基本ルール ══ -->
+  <section id="basics">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>サッカーの基本ルール</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card-sm">
+        <h3>🕐 試合時間</h3>
+        <p>前半45分＋後半45分の計90分。延長戦やPK戦になることもあります。</p>
+      </div>
+      <div class="card-sm">
+        <h3>👥 人数</h3>
+        <p>1チーム11人（うち1人がゴールキーパー）。最大3〜5人交代できます。</p>
+      </div>
+      <div class="card-sm">
+        <h3>🎯 目的</h3>
+        <p>相手ゴールにボールを入れる（得点）。90分でより多く得点したチームが勝ちです。</p>
+      </div>
+      <div class="card-sm">
+        <h3>🤚 基本ルール</h3>
+        <p>手を使ってはいけない（ゴールキーパーを除く）。反則するとフリーキックやPKになります。</p>
+      </div>
+    </div>
+
+    <!-- ピッチ図 -->
+    <div class="pitch-wrap" style="margin-top:24px;">
+      <svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg" width="700">
+        <!-- 芝生背景 -->
+        <defs>
+          <pattern id="grass" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="#2e7d32"/>
+            <rect width="40" height="20" fill="#33883a"/>
+          </pattern>
+        </defs>
+        <rect width="700" height="460" fill="url(#grass)" rx="10"/>
+
+        <!-- ピッチライン -->
+        <rect x="40" y="30" width="620" height="400" fill="none" stroke="white" stroke-width="2.5"/>
+        <!-- センターライン -->
+        <line x1="350" y1="30" x2="350" y2="430" stroke="white" stroke-width="2"/>
+        <!-- センターサークル -->
+        <circle cx="350" cy="230" r="60" fill="none" stroke="white" stroke-width="2"/>
+        <circle cx="350" cy="230" r="4" fill="white"/>
+
+        <!-- 左ゴールエリア -->
+        <rect x="40" y="155" width="60" height="150" fill="none" stroke="white" stroke-width="2"/>
+        <rect x="40" y="100" width="120" height="260" fill="none" stroke="white" stroke-width="2"/>
+        <!-- 左ゴール -->
+        <rect x="22" y="188" width="18" height="84" fill="none" stroke="white" stroke-width="2.5"/>
+
+        <!-- 右ゴールエリア -->
+        <rect x="600" y="155" width="60" height="150" fill="none" stroke="white" stroke-width="2"/>
+        <rect x="540" y="100" width="120" height="260" fill="none" stroke="white" stroke-width="2"/>
+        <!-- 右ゴール -->
+        <rect x="660" y="188" width="18" height="84" fill="none" stroke="white" stroke-width="2.5"/>
+
+        <!-- PK スポット -->
+        <circle cx="125" cy="230" r="3" fill="white"/>
+        <circle cx="575" cy="230" r="3" fill="white"/>
+
+        <!-- コーナー弧 -->
+        <path d="M40,40 A10,10 0 0,1 50,30" fill="none" stroke="white" stroke-width="2"/>
+        <path d="M650,30 A10,10 0 0,1 660,40" fill="none" stroke="white" stroke-width="2"/>
+        <path d="M40,420 A10,10 0 0,0 50,430" fill="none" stroke="white" stroke-width="2"/>
+        <path d="M660,420 A10,10 0 0,1 650,430" fill="none" stroke="white" stroke-width="2"/>
+
+        <!-- ラベル -->
+        <text x="350" y="22" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="12" font-weight="bold" font-family="sans-serif">— ピッチ（フィールド）105m × 68m —</text>
+        <text x="80" y="455" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="sans-serif">自チームゴール</text>
+        <text x="615" y="455" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="sans-serif">相手ゴール</text>
+        <text x="350" y="455" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="sans-serif">センターライン</text>
+        <text x="95" y="140" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="10" font-family="sans-serif">ペナルティ</text>
+        <text x="95" y="153" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="10" font-family="sans-serif">エリア</text>
+      </svg>
+    </div>
+  </section>
+
+  <div class="col-box">
+    <span class="col-tag">📰 コラム①</span>
+    <h4>オフサイドルール「3人の壁」から「2人」へ──1925年の大改正</h4>
+    <p>
+      1925年以前、オフサイドは「攻撃側選手の前方に相手が<em>3人以上</em>いること」が条件だった。これを利用してニューキャッスル・ユナイテッドのDFビル・マカラキーが考案したのが「3人オフサイドトラップ」。DFがわずか3人前に出るだけで相手FWを根こそぎ封殺できたため、1920年代のイングランドは0-0や1-0ゲームが続出し、観客数が激減した。<br><br>
+      危機感を持ったFAは1925年にルールを「<em>2人以上</em>」へ改正。翌シーズンのリーグ総得点は前年比約43%増という劇的な変化をもたらした。この改正に最初に対応したのがアーセナル監督ハーバート・チャップマンで、彼はCBを1枚前に出して「WMフォーメーション」を発明した。現代フォーメーション史は、1つのルール改正から始まっている。
+    </p>
+  </div>
+
+  <!-- ══ 2. ポジション ══ -->
+  <section id="positions">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>ポジション名と役割</h2>
+    </div>
+
+    <p style="color:var(--text-mid); margin-bottom:20px; font-size:0.92rem;">
+      サッカーのポジションは大きく <strong>4つ</strong> に分かれます。下のピッチ図で位置と名前を確認しましょう。
+    </p>
+
+    <div class="pitch-wrap">
+      <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" width="700">
+        <defs>
+          <pattern id="grass2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="#2e7d32"/>
+            <rect width="40" height="20" fill="#33883a"/>
+          </pattern>
+        </defs>
+        <rect width="700" height="470" fill="url(#grass2)" rx="10"/>
+
+        <!-- ピッチライン（縦向き表示） -->
+        <rect x="50" y="30" width="600" height="410" fill="none" stroke="white" stroke-width="2"/>
+        <line x1="50" y1="235" x2="650" y2="235" stroke="white" stroke-width="2"/>
+        <circle cx="350" cy="235" r="50" fill="none" stroke="white" stroke-width="2"/>
+        <circle cx="350" cy="235" r="4" fill="white"/>
+
+        <!-- 上ゴールエリア -->
+        <rect x="220" y="30" width="260" height="55" fill="none" stroke="white" stroke-width="2"/>
+        <rect x="280" y="30" width="140" height="28" fill="none" stroke="white" stroke-width="2"/>
+        <rect x="314" y="8" width="72" height="22" fill="none" stroke="white" stroke-width="2"/>
+
+        <!-- 下ゴールエリア -->
+        <rect x="220" y="385" width="260" height="55" fill="none" stroke="white" stroke-width="2"/>
+        <rect x="280" y="412" width="140" height="28" fill="none" stroke="white" stroke-width="2"/>
+        <rect x="314" y="440" width="72" height="22" fill="none" stroke="white" stroke-width="2.5"/>
+
+        <!-- PKスポット -->
+        <circle cx="350" cy="100" r="3" fill="white"/>
+        <circle cx="350" cy="370" r="3" fill="white"/>
+
+        <!-- ═══ 選手 ─ 4-4-2 配置例 ═══ -->
+
+        <!-- GK -->
+        <circle cx="350" cy="415" r="18" fill="#ffd600" stroke="white" stroke-width="2.5"/>
+        <text x="350" y="421" text-anchor="middle" fill="#1a2a1e" font-size="12" font-weight="900" font-family="sans-serif">GK</text>
+        <text x="350" y="448" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif" opacity="0.9">ゴールキーパー</text>
+
+        <!-- DF -->
+        <circle cx="165" cy="345" r="18" fill="#1565c0" stroke="white" stroke-width="2.5"/>
+        <text x="165" y="351" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">LSB</text>
+        <circle cx="268" cy="345" r="18" fill="#1565c0" stroke="white" stroke-width="2.5"/>
+        <text x="268" y="351" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">CB</text>
+        <circle cx="432" cy="345" r="18" fill="#1565c0" stroke="white" stroke-width="2.5"/>
+        <text x="432" y="351" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">CB</text>
+        <circle cx="535" cy="345" r="18" fill="#1565c0" stroke="white" stroke-width="2.5"/>
+        <text x="535" y="351" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">RSB</text>
+        <text x="350" y="378" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10" font-family="sans-serif">━━━━ ディフェンダー（DF）━━━━</text>
+
+        <!-- MF -->
+        <circle cx="165" cy="255" r="18" fill="#2d8a40" stroke="white" stroke-width="2.5"/>
+        <text x="165" y="261" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">LMF</text>
+        <circle cx="277" cy="255" r="18" fill="#2d8a40" stroke="white" stroke-width="2.5"/>
+        <text x="277" y="261" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">CMF</text>
+        <circle cx="423" cy="255" r="18" fill="#2d8a40" stroke="white" stroke-width="2.5"/>
+        <text x="423" y="261" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">CMF</text>
+        <circle cx="535" cy="255" r="18" fill="#2d8a40" stroke="white" stroke-width="2.5"/>
+        <text x="535" y="261" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">RMF</text>
+        <text x="350" y="225" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10" font-family="sans-serif">━━━━ ミッドフィルダー（MF）━━━━</text>
+
+        <!-- FW -->
+        <circle cx="267" cy="150" r="18" fill="#c62828" stroke="white" stroke-width="2.5"/>
+        <text x="267" y="156" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">CF</text>
+        <circle cx="433" cy="150" r="18" fill="#c62828" stroke="white" stroke-width="2.5"/>
+        <text x="433" y="156" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="sans-serif">CF</text>
+        <text x="350" y="122" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10" font-family="sans-serif">━━━━━ フォワード（FW）━━━━━</text>
+
+        <!-- 相手ゴール矢印 -->
+        <text x="350" y="60" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="bold" font-family="sans-serif">▲ 相手ゴール（攻める方向）</text>
+      </svg>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#ffd600;border:2px solid #aaa;"></div>GK（ゴールキーパー）</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#1565c0;"></div>DF（ディフェンダー）</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2d8a40;"></div>MF（ミッドフィルダー）</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#c62828;"></div>FW（フォワード）</div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;" class="card-grid">
+      <div class="card-sm" style="border-left-color:#ffd600;">
+        <h3>🧤 GK（ゴールキーパー）</h3>
+        <p>唯一、手が使える選手。ゴールを守るのが最大の役割。ビルドアップ（攻撃の組み立て）でパスを出すことも増えています。</p>
+      </div>
+      <div class="card-sm defend">
+        <h3>🛡️ DF（ディフェンダー）</h3>
+        <p>
+          <strong>CB（センターバック）:</strong> 中央で相手FWをマーク。高さと強さが求められる。<br>
+          <strong>SB（サイドバック）:</strong> 両サイドを守りつつ、攻撃参加もする現代の万能ポジション。
+        </p>
+      </div>
+      <div class="card-sm" style="border-left-color:#2d8a40;">
+        <h3>⚙️ MF（ミッドフィルダー）</h3>
+        <p>
+          <strong>CMF（セントラルMF）:</strong> 中盤でボールを循環させる試合の司令塔。<br>
+          <strong>DMF（守備的MF）:</strong> DFの前でボールを奪うバランサー。<br>
+          <strong>サイドMF:</strong> 左右の通路を走り上下動する。
+        </p>
+      </div>
+      <div class="card-sm attack">
+        <h3>⚡ FW（フォワード）</h3>
+        <p>
+          <strong>CF（センターフォワード）:</strong> 最前線でゴールを狙う点取り屋。<br>
+          <strong>ウィング:</strong> サイドから仕掛けてシュートやクロスを狙う。<br>
+          <strong>トップ下:</strong> FWの直後でチャンスを演出する創造的な役割。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="col-box">
+    <span class="col-tag">📰 コラム②</span>
+    <h4>背番号1〜11は「役職番号」だった──ポジションと数字が一体だった時代</h4>
+    <p>
+      かつてサッカーの背番号は選手個人ではなく<em>ポジションに割り当てられていた</em>。GKが1番、右CBが2番、左CBが3番、右ハーフが4番……と続き、センターフォワードが9番、インサイドライト（攻撃的MF右）が10番、インサイドレフトが11番。選手は試合ごとに役割に対応した番号を着用した。<br><br>
+      このため今も「10番＝チームの顔」「9番＝ストライカー」というイメージが世界共通で残っている。1993年に始まったプレミアリーグが通し番号制（1〜25番の固定登録）を採用したのが転換点で、以後「背番号と役割の分離」が進んだ。メッシが<em>10番</em>、ロナウドが<em>7番</em>にこだわるのも、この歴史的重みへの敬意と見ることができる。
+    </p>
+  </div>
+
+  <!-- ══ 3. フォーメーション ══ -->
+  <section id="formations">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>主なフォーメーション</h2>
+    </div>
+
+    <p style="color:var(--text-mid); margin-bottom:20px; font-size:0.92rem;">
+      フォーメーションとは<strong>選手の並び方（陣形）</strong>のこと。GKを除いた10人を「DF－MF－FW」の順に数字で表します。
+    </p>
+
+    <div class="formation-grid">
+
+      <!-- 4-4-2 -->
+      <div class="formation-card">
+        <h3>4-4-2</h3>
+        <div class="tag">最も基本的なフォーメーション</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x4 -->
+          <circle cx="35" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="78" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="122" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="165" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- MF x4 -->
+          <circle cx="35" cy="150" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="78" cy="150" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="122" cy="150" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="165" cy="150" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- FW x2 -->
+          <circle cx="72" cy="90" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="128" cy="90" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-4-2</text>
+        </svg>
+        <p>バランスが良く守備も攻撃も安定。2トップでゴールを狙いながら、中盤4人が幅広くカバーします。入門者にも理解しやすい陣形。</p>
+      </div>
+
+      <!-- 4-3-3 -->
+      <div class="formation-card">
+        <h3>4-3-3</h3>
+        <div class="tag">攻撃的なスタンダード陣形</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x4 -->
+          <circle cx="35" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="78" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="122" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="165" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- MF x3 -->
+          <circle cx="55" cy="155" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="140" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="145" cy="155" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- FW x3 -->
+          <circle cx="40" cy="85" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="78" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="160" cy="85" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-3-3</text>
+        </svg>
+        <p>バルセロナやリバプールが愛用。両ウィングが幅を取り、中盤3人でボールを支配します。攻撃力が高く、現代で最もポピュラーな陣形のひとつ。</p>
+      </div>
+
+      <!-- 3-5-2 -->
+      <div class="formation-card">
+        <h3>3-5-2</h3>
+        <div class="tag">サイドを制圧する可変陣形</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x3 -->
+          <circle cx="55" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="145" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- MF x5 -->
+          <circle cx="26" cy="155" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="62" cy="148" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="143" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="138" cy="148" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="174" cy="155" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- FW x2 -->
+          <circle cx="72" cy="88" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="128" cy="88" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">3-5-2</text>
+        </svg>
+        <p>ウィングバック（WB）がサイドを上下運動しながら攻守両面をカバー。3バックの安定感と5中盤の支配力を両立します。インテルやユベントスが得意とする陣形。</p>
+      </div>
+
+    </div>
+
+    <!-- 追加フォーメーション -->
+    <h3 style="color:var(--green-dark); font-size:1rem; margin:32px 0 16px; padding-left:4px;">その他のバリエーション</h3>
+    <div class="formation-grid">
+
+      <!-- 4-2-3-1 -->
+      <div class="formation-card">
+        <h3>4-2-3-1</h3>
+        <div class="tag">世界で最も使われる現代型陣形</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x4 -->
+          <circle cx="35" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="78" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="122" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="165" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- ダブルボランチ x2 -->
+          <circle cx="72" cy="170" r="12" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2"/>
+          <circle cx="128" cy="170" r="12" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2"/>
+          <!-- 攻撃的MF x3 -->
+          <circle cx="32" cy="122" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="116" r="12" fill="#f5a623" stroke="white" stroke-width="2"/>
+          <circle cx="168" cy="122" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- FW x1 -->
+          <circle cx="100" cy="72" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-2-3-1</text>
+        </svg>
+        <p>ダブルボランチ（緑濃）で中盤を守りながら、トップ下（橙）と両ウイングが攻撃を担う。守備の安定と攻撃力を高次元で両立。2010年代に世界中のクラブ・代表が採用した最もポピュラーな現代型フォーメーション。</p>
+      </div>
+
+      <!-- 4-1-4-1 -->
+      <div class="formation-card">
+        <h3>4-1-4-1</h3>
+        <div class="tag">堅牢なブロックで守るカウンター型</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x4 -->
+          <circle cx="35" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="78" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="122" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="165" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- アンカー x1 -->
+          <circle cx="100" cy="175" r="12" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2"/>
+          <!-- MF x4 -->
+          <circle cx="27" cy="133" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="72" cy="127" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="128" cy="127" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="173" cy="133" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- FW x1 -->
+          <circle cx="100" cy="72" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-1-4-1</text>
+        </svg>
+        <p>1枚のアンカー（ボランチ）がDFの前に立ち、広大なスペースをカバー。中盤4枚が横に広いブロックを形成して守りを固める守備的な陣形。1トップへのカウンターが主な攻め手。</p>
+      </div>
+
+      <!-- 4-4-2 ダイヤモンド -->
+      <div class="formation-card">
+        <h3>4-4-2 ダイヤモンド</h3>
+        <div class="tag">中盤を菱形に並べる変形4-4-2</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x4 -->
+          <circle cx="35" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="78" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="122" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="165" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- ダイヤモンド中盤 -->
+          <!-- 底（ボランチ） -->
+          <circle cx="100" cy="178" r="12" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2"/>
+          <!-- 左右CM -->
+          <circle cx="50" cy="148" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="150" cy="148" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- 頂点（トップ下） -->
+          <circle cx="100" cy="118" r="12" fill="#f5a623" stroke="white" stroke-width="2"/>
+          <!-- FW x2 -->
+          <circle cx="68" cy="74" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="132" cy="74" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-4-2 ◆</text>
+        </svg>
+        <p>通常の横並び4-4-2と違い、中盤4人を菱形（◆）に配置。底にボランチ、頂点にトップ下（橙）を置く。中央支配力が高い一方、サイドのカバーが手薄になりやすいのが弱点。</p>
+      </div>
+
+      <!-- 3-4-3 -->
+      <div class="formation-card">
+        <h3>3-4-3</h3>
+        <div class="tag">超攻撃的な3バック</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x3 -->
+          <circle cx="50" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="150" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- MF x4（WB含む） -->
+          <circle cx="26" cy="158" r="12" fill="#2d8a40" stroke="#a5d6a7" stroke-width="2"/>
+          <circle cx="72" cy="150" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="128" cy="150" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="174" cy="158" r="12" fill="#2d8a40" stroke="#a5d6a7" stroke-width="2"/>
+          <!-- FW x3 -->
+          <circle cx="38" cy="88" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="80" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="162" cy="88" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">3-4-3</text>
+        </svg>
+        <p>3バックを採用しながら前線に3枚を並べる超攻撃的な陣形。両端のMF（薄緑枠）がウイングバック兼任でサイドを制圧。グアルディオラ時代のバルサや現代のチェルシーが使用。</p>
+      </div>
+
+      <!-- 5-3-2 -->
+      <div class="formation-card">
+        <h3>5-3-2</h3>
+        <div class="tag">守備最優先・堅守カウンター型</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x5 -->
+          <circle cx="26" cy="208" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="55" cy="204" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="202" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="145" cy="204" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="174" cy="208" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- MF x3 -->
+          <circle cx="50" cy="155" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="148" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="150" cy="155" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- FW x2 -->
+          <circle cx="68" cy="90" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="132" cy="90" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">5-3-2</text>
+        </svg>
+        <p>5枚のDFで自陣を固め、少ない人数で速攻を仕掛ける守備重視の陣形。3-5-2の守備時の形とも近い。リードを守り切りたい試合終盤や格上チームと対戦する際にとられることが多い。</p>
+      </div>
+
+      <!-- 4-3-2-1（クリスマスツリー） -->
+      <div class="formation-card">
+        <h3>4-3-2-1</h3>
+        <div class="tag">クリスマスツリー型・崩しの職人陣形</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x4 -->
+          <circle cx="35" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="78" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="122" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="165" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- MF x3 -->
+          <circle cx="50" cy="168" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="162" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="150" cy="168" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- シャドー x2 -->
+          <circle cx="68" cy="118" r="12" fill="#f5a623" stroke="white" stroke-width="2"/>
+          <circle cx="132" cy="118" r="12" fill="#f5a623" stroke="white" stroke-width="2"/>
+          <!-- FW x1 -->
+          <circle cx="100" cy="72" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-3-2-1 🎄</text>
+        </svg>
+        <p>上から見た形がクリスマスツリーに見えることから「クリスマスツリー」とも呼ばれる。1トップの両脇にシャドー2枚（橙）を配置し、中盤3枚が守備を支える。90年代〜2000年代のACミランが得意とした。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="col-box">
+    <span class="col-tag">📰 コラム③</span>
+    <h4>アリゴ・サッキが「カテナチオ」を葬った夜──4バック革命の誕生</h4>
+    <p>
+      1980年代後半まで、イタリア守備の聖典は<em>カテナチオ</em>（鎖の意）だった。最後尾に「リベロ（自由人）」を置き、1点を守り切るこの哲学で、エレニオ・エレーラのインテルは1964〜65年のチャンピオンズカップを連覇した。「美しく負けるより醜く勝て」はイタリア守備の代名詞だった。<br><br>
+      それを真っ向から否定したのがアリゴ・サッキ。1987年にACミランの監督に就任した彼は、リベロを廃止してフラット4バック＋ゾーンディフェンスを採用。「選手は関係ない、コンセプトが大事だ」という哲学で周囲の反発を受けながらも1988-89・1989-90シーズンのチャンピオンズカップを連覇。<em>インテルを7-1で粉砕した試合</em>は「カテナチオへの死亡宣告」として語り継がれる。現代の4バック＋ゾーンDFの直接の祖先はここにある。
+    </p>
+  </div>
+
+  <!-- ══ 4. 攻め方 ══ -->
+  <section id="attack">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>攻め方（攻撃戦術）</h2>
+    </div>
+
+    <div class="highlight-bar">
+      <strong>現代の攻撃理論：</strong> 「スペースを作る → 使う → 仕留める」の連鎖が基本。ボールを持っていない選手の動きが相手を動かし、スペースを生み出します。攻撃はボール保持者だけでなく<em>全員</em>で作るものです。
+    </div>
+
+    <!-- 3つの優位性 -->
+    <div style="background:linear-gradient(135deg,#1a2a1e 0%,#1b5e20 100%); border-radius:16px; padding:24px; margin-top:20px; color:white;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <span style="background:#f5a623; color:white; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.08em; flex-shrink:0;">中〜上級コンセプト</span>
+        <h3 style="font-size:1.1rem; font-weight:900;">3つの優位性（スペリオリティ）</h3>
+      </div>
+      <p style="font-size:0.87rem; opacity:0.88; margin-bottom:16px; line-height:1.75;">
+        グアルディオラが体系化した攻撃の基本思想。「どんな優位を持ってゴールを目指すか」を3種類に分類します。優れたチームはこれらを局面ごとに使い分けています。
+      </p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap:12px;">
+        <div style="background:rgba(255,255,255,0.1); border-radius:10px; padding:16px;">
+          <div style="font-weight:900; margin-bottom:8px; color:#a5d6a7; font-size:0.95rem;">① 数的優位（Numerical）</div>
+          <p style="font-size:0.83rem; opacity:0.9; line-height:1.65;">ある局面で相手より人数が多い状態。例：2対1・3対2。サイドバックの攻撃参加やIHの飛び込みで数的優位を意図的に作り出します。</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); border-radius:10px; padding:16px;">
+          <div style="font-weight:900; margin-bottom:8px; color:#80cbc4; font-size:0.95rem;">② 位置的優位（Positional）</div>
+          <p style="font-size:0.83rem; opacity:0.9; line-height:1.65;">人数が同じでも、<strong style="color:#b2dfdb;">良いポジション</strong>（DFとMFのライン間・ハーフスペース・相手の背後）にいる状態。「ボールを受ける位置」が最重要。</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); border-radius:10px; padding:16px;">
+          <div style="font-weight:900; margin-bottom:8px; color:#fff59d; font-size:0.95rem;">③ 質的優位（Qualitative）</div>
+          <p style="font-size:0.83rem; opacity:0.9; line-height:1.65;">1対1で個人能力が相手を上回る状態。例：高速ウイングvs遅いSB。「ミスマッチを意図的に作る」ためにフォーメーションや選手配置を設計します。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ビルドアップ詳細 -->
+    <div class="card" style="margin-top:20px;">
+      <h3 style="color:var(--green-dark); font-size:1.05rem; margin-bottom:6px;">📐 ビルドアップ：プレスを「剥がす」仕組み</h3>
+      <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:16px; line-height:1.7;">
+        後方からのパスつなぎは「逃げ」ではなく、相手を引き寄せてスペースを作る積極的な戦術です。<strong>「サードマン（第3の選手）」</strong>の概念が核心にあります。
+      </p>
+      <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+
+        <svg viewBox="0 0 520 400" width="520" style="flex-shrink:0; max-width:100%;">
+          <defs>
+            <marker id="wa" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="white"/>
+            </marker>
+            <marker id="wg" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#a5d6a7"/>
+            </marker>
+            <marker id="wy" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#ffd600"/>
+            </marker>
+            <marker id="wr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#ef9a9a"/>
+            </marker>
+          </defs>
+
+          <!-- 背景・ピッチ枠 -->
+          <rect width="520" height="400" fill="#2e7d32" rx="10"/>
+          <rect x="16" y="16" width="488" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+          <line x1="16" y1="208" x2="504" y2="208" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <!-- ペナルティエリア -->
+          <rect x="136" y="294" width="248" height="90" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <!-- ゴール枠 -->
+          <rect x="196" y="372" width="128" height="12" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+
+          <text x="260" y="13" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11" font-family="sans-serif">▲ 攻める方向</text>
+
+          <!-- ─── 自チーム ─── -->
+          <!-- GK -->
+          <circle cx="260" cy="373" r="18" fill="#ffd600" stroke="white" stroke-width="2.5"/>
+          <text x="260" y="379" text-anchor="middle" fill="#111" font-size="12" font-weight="bold" font-family="sans-serif">GK</text>
+
+          <!-- CB(L) -->
+          <circle cx="148" cy="320" r="18" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <text x="148" y="326" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="sans-serif">CB</text>
+
+          <!-- CB(R) -->
+          <circle cx="368" cy="320" r="18" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <text x="368" y="326" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="sans-serif">CB</text>
+
+          <!-- SB(L) -->
+          <circle cx="48" cy="268" r="18" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <text x="48" y="265" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">LSB</text>
+          <text x="48" y="278" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="9" font-family="sans-serif">高い位置</text>
+
+          <!-- SB(R) -->
+          <circle cx="470" cy="268" r="18" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <text x="470" y="265" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">RSB</text>
+          <text x="470" y="278" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="9" font-family="sans-serif">高い位置</text>
+
+          <!-- ボランチ（降りてきている） -->
+          <circle cx="256" cy="232" r="18" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2.5"/>
+          <text x="256" y="238" text-anchor="middle" fill="#a5d6a7" font-size="12" font-weight="bold" font-family="sans-serif">Vol</text>
+
+          <!-- IH(L) -->
+          <circle cx="138" cy="186" r="18" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <text x="138" y="192" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="sans-serif">IH</text>
+
+          <!-- 3rdマン・フリーのIH(R) -->
+          <circle cx="390" cy="168" r="20" fill="#f5a623" stroke="white" stroke-width="2.5"/>
+          <text x="390" y="164" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">IH</text>
+          <text x="390" y="178" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">★</text>
+          <text x="392" y="145" text-anchor="middle" fill="#ffd600" font-size="11" font-weight="bold" font-family="sans-serif">3rdマン</text>
+          <text x="392" y="133" text-anchor="middle" fill="#ffd600" font-size="10" font-family="sans-serif">フリー！</text>
+
+          <!-- ─── 相手プレス選手 ─── -->
+          <circle cx="218" cy="208" r="15" fill="#c62828" stroke="#ffcdd2" stroke-width="2"/>
+          <text x="218" y="214" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">敵</text>
+
+          <circle cx="292" cy="252" r="15" fill="#c62828" stroke="#ffcdd2" stroke-width="2"/>
+          <text x="292" y="258" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">敵</text>
+
+          <!-- プレスラベル -->
+          <text x="244" y="193" text-anchor="middle" fill="#ef9a9a" font-size="11" font-weight="bold" font-family="sans-serif">プレス！</text>
+
+          <!-- プレス矢印（敵→Vol） -->
+          <line x1="230" y1="218" x2="244" y2="226" stroke="#ef9a9a" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#wr)"/>
+          <line x1="281" y1="244" x2="269" y2="238" stroke="#ef9a9a" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#wr)"/>
+
+          <!-- ─── パス ルート ─── -->
+          <!-- ①GK→CB(R) 白破線 -->
+          <line x1="277" y1="363" x2="352" y2="327" stroke="white" stroke-width="2" stroke-dasharray="7,4" marker-end="url(#wa)"/>
+          <!-- ②CB(R)→SB(R) 緑実線 -->
+          <line x1="385" y1="311" x2="453" y2="276" stroke="#a5d6a7" stroke-width="2.5" marker-end="url(#wg)"/>
+          <!-- ③SB(R)→3rdマン 黄太線 -->
+          <line x1="457" y1="257" x2="407" y2="184" stroke="#ffd600" stroke-width="3.5" marker-end="url(#wy)"/>
+
+          <!-- CB(R)→Vol 封じられたルート（赤破線） -->
+          <line x1="351" y1="313" x2="273" y2="240" stroke="rgba(255,80,80,0.5)" stroke-width="2" stroke-dasharray="5,4"/>
+          <text x="316" y="276" text-anchor="middle" fill="#ef9a9a" font-size="10" font-family="sans-serif">× 消された</text>
+
+          <!-- ─── ステップ番号バッジ ─── -->
+          <circle cx="312" cy="344" r="11" fill="white" opacity="0.88"/>
+          <text x="312" y="349" text-anchor="middle" fill="#1565c0" font-size="11" font-weight="bold" font-family="sans-serif">①</text>
+
+          <circle cx="418" cy="292" r="11" fill="#a5d6a7" opacity="0.9"/>
+          <text x="418" y="297" text-anchor="middle" fill="#1b5e20" font-size="11" font-weight="bold" font-family="sans-serif">②</text>
+
+          <circle cx="435" cy="218" r="11" fill="#ffd600" opacity="0.9"/>
+          <text x="435" y="223" text-anchor="middle" fill="#7a5800" font-size="11" font-weight="bold" font-family="sans-serif">③</text>
+        </svg>
+
+        <div style="flex:1; min-width:200px;">
+          <ul class="step-list">
+            <li>
+              <span class="step-num">1</span>
+              <span><strong>GK→CB：</strong>ボランチへの直接パスは相手2人がプレス。「直線」を消された状態。</span>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <span><strong>CB→SB（迂回）：</strong>正面が詰まっているのでSBに逃がす。相手2枚がボランチ周辺に集まった結果、逆サイドに空白が生まれる。</span>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <span><strong>SB→3rdマン（橙）：</strong>フリーのIHへパス。2人が引き寄せられたおかげで生まれたフリーな「第3の選手」を使って前進。</span>
+            </li>
+          </ul>
+          <div style="background:#e8f5e9; border-radius:8px; padding:12px; margin-top:12px; font-size:0.83rem; color:var(--text-mid); line-height:1.7;">
+            <strong style="color:var(--green-dark);">⚡ 核心：</strong>
+            プレスを「剥がす」とは逃げることではなく、<strong>引き寄せて別の場所を空ける</strong>こと。相手を動かすほどピッチのどこかにスペースが生まれます。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 攻撃スタイル -->
+    <div class="card" style="margin-top:20px;">
+      <h3 style="color:var(--green-dark); font-size:1.05rem; margin-bottom:16px;">🔴 攻撃スタイルと戦術的背景</h3>
+      <div class="tactic-row">
+        <div class="tactic-box attack-box">
+          <span class="label-pill pill-attack">ポゼッション</span>
+          <h3>ティキタカ → ポジショナルプレーへの進化</h3>
+          <p>バルサが広めた「つなぎ」は、グアルディオラによって<strong>「5レーン・ポジショナルプレー」</strong>へ進化。単なるボール回しではなく、「常に3〜4つ以上のパスコースを持つ」「ラインとラインの間（ライン間）でボールを受ける」という原則に基づく。<br><br>
+          相手が奪いに出てきた瞬間にこそ背後のスペースが生まれるため、プレッシングを誘発して逆手に取る逆説的戦術でもあります。</p>
+        </div>
+        <div class="tactic-box attack-box">
+          <span class="label-pill pill-attack">トランジション攻撃</span>
+          <h3>カウンター＆ゲーゲンプレッシング</h3>
+          <p>ボールを奪った直後の<strong>「移行の瞬間（トランジション）」</strong>が最大のチャンス。相手の攻撃陣がまだ戻っておらず、守備形が崩れた状態を直撃する。<br><br>
+          クロップは「ボールを失ったら5秒以内に奪い返せ」と説く。意図的にリトリート（引いて守る）してカウンターを誘発するチームと、失った直後に全員で囲む（ゲーゲンプレス）チームに大別されます。</p>
+        </div>
+      </div>
+      <div class="tactic-row">
+        <div class="tactic-box attack-box">
+          <span class="label-pill pill-attack">幅と深さの活用</span>
+          <h3>サイド→ハーフスペース→中央の連鎖</h3>
+          <p>現代攻撃の定石は<strong>「幅で相手を引き伸ばし、ハーフスペースで崩す」</strong>こと。<br><br>
+          ①ウイングが大外でSBを釘付けにする → ②IHがハーフスペースに侵入（SBが付いていけない中間地帯）→ ③中央CFへラストパス、という3ステップが典型。<strong>サイドチェンジ</strong>（逆サイドへの長いパス）でブロックを横にズラしてからリスタートするパターンも現代の必修テクニック。</p>
+        </div>
+        <div class="tactic-box attack-box">
+          <span class="label-pill pill-attack">ハイプレス</span>
+          <h3>前線からの守備＝攻撃の起点化</h3>
+          <p>プレッシングは守備行為に見えて実は<strong>攻撃戦術</strong>。高い位置で奪えばゴールまでの距離が短く、相手DFが戻る間もないカウンターに直結します。<br><br>
+          ただし「プレスをかわされる」と一気に裏に広大なスペースが生まれる諸刃の剣。だからこそプレスをかける<strong>タイミング（プレッシングトリガー）</strong>と、かわされたときの即時切り替えが極めて重要です。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ライン突破の3手段 -->
+    <div class="card" style="margin-top:20px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <span style="background:#e8f5e9; color:#1b5e20; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.06em;">中〜上級コンセプト</span>
+        <h3 style="color:var(--green-dark); font-size:1.05rem; font-weight:900;">DFラインを突破する3つの手段</h3>
+      </div>
+      <p style="font-size:0.87rem; color:var(--text-mid); margin-bottom:16px; line-height:1.7;">
+        組織的に守る相手の「守備ブロック（ライン）」を越えるには大きく3つのアプローチがあります。実戦では同一フェーズで複数を組み合わせ、相手に「どれを防ぐか」の選択を迫ります。
+      </p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap:14px;">
+        <div style="background:#ffebee; border-radius:10px; padding:16px; border-left:4px solid #e53935;">
+          <div style="font-weight:900; color:#b71c1c; margin-bottom:8px;">① ドリブル突破（個人技）</div>
+          <p style="font-size:0.84rem; color:var(--text-mid); line-height:1.65;">1対1の局面で個人能力で突破。質的優位を直接使う最もシンプルな方法。サラー・ムバッペ・三笘薫のようなウイングが典型的な担い手。</p>
+        </div>
+        <div style="background:#e8f5e9; border-radius:10px; padding:16px; border-left:4px solid #388e3c;">
+          <div style="font-weight:900; color:#1b5e20; margin-bottom:8px;">② ライン間への縦パス</div>
+          <p style="font-size:0.84rem; color:var(--text-mid); line-height:1.65;">DFラインとMFラインの「間」に入り込んだ選手（ライン間の選手）へ縦パスを通す。組織的守備の内側を直接刺すため、決まれば即チャンスになりやすい。</p>
+        </div>
+        <div style="background:#fff3e0; border-radius:10px; padding:16px; border-left:4px solid #f57c00;">
+          <div style="font-weight:900; color:#e65100; margin-bottom:8px;">③ 裏抜け（スルーパス）</div>
+          <p style="font-size:0.84rem; color:var(--text-mid); line-height:1.65;">DFの背後のスペースへ走り込み、スルーパスを受ける。DFがラインを保ちたい心理を逆手に取る。CFの動き出しのタイミングが全て。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 崩しのコンビネーション -->
+    <div class="card" style="margin-top:20px;">
+      <h3 style="color:var(--green-dark); font-size:1.05rem; margin-bottom:14px;">🔗 崩しのコンビネーション（実戦頻出パターン）</h3>
+      <ul class="step-list">
+        <li>
+          <span class="step-num" style="background:#b71c1c; font-size:0.8rem;">技</span>
+          <span><strong>オーバーラップ：</strong>SBがウイングの外側を追い越して深い位置へ侵入。相手SBを「内外どちらケアするか」の2択に追い込み、どちらに出てきてもスペースが生まれます。</span>
+        </li>
+        <li>
+          <span class="step-num" style="background:#b71c1c; font-size:0.8rem;">技</span>
+          <span><strong>インナーラン：</strong>ウイングがサイドから中央方向へ斜めに走り込む動き。相手CBを引き出しつつ、その空けたスペースをSBが使う「連動」が生まれます。インバーテッドウイング（逆足WG）の基本動作。</span>
+        </li>
+        <li>
+          <span class="step-num" style="background:#b71c1c; font-size:0.8rem;">技</span>
+          <span><strong>ワンツー＋サードマン侵入：</strong>2人が壁パスを交換して1枚剥がしながら、第3の選手がその裏・横から飛び込む。「マークがズレる瞬間」を連続して生み出す最も古典的かつ有効なコンビ。</span>
+        </li>
+        <li>
+          <span class="step-num" style="background:#b71c1c; font-size:0.8rem;">技</span>
+          <span><strong>サイドチェンジ：</strong>左サイドが詰まったら一気に対角へロングパス。相手ブロックが圧縮・スライドしてくる前に広いスペースで1対1を作る。ピッチを広く使う現代攻撃の必須技。</span>
+        </li>
+        <li>
+          <span class="step-num" style="background:#b71c1c; font-size:0.8rem;">技</span>
+          <span><strong>偽9番の「引いて開ける」：</strong>CFが下がることで逆説的にゴール前スペースが生まれ、IHやウイングが飛び込む。「消えることで使う」という現代FWの高度な役割。</span>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <div class="col-box">
+    <span class="col-tag">📰 コラム④</span>
+    <h4>トータルフットボール──クライフとミケルスが描いた「全員攻撃・全員守備」の理想</h4>
+    <p>
+      1970年代初頭、オランダのアヤックスが世界を震撼させた。<em>「トータルフットボール（Totaalvoetbal）」</em>──GK以外の選手が状況に応じてポジションを流動的に交換し、全員が攻撃に関わり全員が守備に参加する革命的サッカーだ。中心にいたのがヨハン・クライフ。彼は技術・知性・スピードを兼備し、「ポジションなき選手」として世界最高峰に君臨した。<br><br>
+      この哲学はアヤックスの欧州3連覇（1971〜73年）と1974年W杯準優勝で世界に伝播。クライフ後のバルセロナへ、グアルディオラへ、そして現代の「ポジショナルプレー」へと脈々と受け継がれている。現代の「全員がボールを受けられる選手であれ」「スペースを作る動きを優先せよ」という概念はすべてここに源流を持つ。<em>サッカーの哲学を変えた人間は意外と少ない。クライフはその一人だ。</em>
+    </p>
+  </div>
+
+  <!-- ══ 5. 守り方 ══ -->
+  <section id="defense">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>守り方（守備戦術）</h2>
+    </div>
+
+    <div class="highlight-bar">
+      <strong>現代の守備理論：</strong> 「スペースを消す」と「ボールを奪う」は別物です。現代の守備は<em>どこで奪うか</em>を設計するもの。奪いたい場所から逆算してブロックの高さ・プレスのタイミングを決めます。
+    </div>
+
+    <!-- ブロックの高さ -->
+    <div class="card" style="margin-top:20px;">
+      <h3 style="color:#0d47a1; font-size:1.05rem; margin-bottom:8px;">📊 守備ブロックの「高さ」── ハイ / ミッド / ロー</h3>
+      <p style="font-size:0.86rem; color:var(--text-mid); margin-bottom:16px; line-height:1.7;">
+        守備の陣形がピッチのどの高さに位置するかで、チームのスタイルが決まります。試合の状況・相手の強さ・スコアによって意図的に使い分けます。
+      </p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:16px; margin-bottom:20px;">
+        <!-- ハイブロック -->
+        <div style="text-align:center;">
+          <svg viewBox="0 0 170 240" width="170" style="display:block; margin:0 auto;">
+            <rect width="170" height="240" fill="#1b3a1e" rx="8"/>
+            <rect x="8" y="8" width="154" height="224" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="8" y1="124" x2="162" y2="124" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <!-- ゴール（下） -->
+            <rect x="55" y="222" width="60" height="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            <!-- プレスゾーン（上部を赤く） -->
+            <rect x="8" y="8" width="154" height="85" fill="rgba(198,40,40,0.25)" rx="4"/>
+            <text x="85" y="55" text-anchor="middle" fill="#ef9a9a" font-size="10" font-weight="bold" font-family="sans-serif">相手陣地で</text>
+            <text x="85" y="68" text-anchor="middle" fill="#ef9a9a" font-size="10" font-weight="bold" font-family="sans-serif">奪いにいく</text>
+            <!-- 守備ライン（高い位置） -->
+            <circle cx="38" cy="102" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/>
+            <circle cx="68" cy="98" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/>
+            <circle cx="102" cy="98" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/>
+            <circle cx="132" cy="102" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/>
+            <circle cx="55" cy="134" r="10" fill="#e57373" stroke="white" stroke-width="1.5"/>
+            <circle cx="85" cy="128" r="10" fill="#e57373" stroke="white" stroke-width="1.5"/>
+            <circle cx="115" cy="134" r="10" fill="#e57373" stroke="white" stroke-width="1.5"/>
+            <!-- GK -->
+            <circle cx="85" cy="210" r="10" fill="#ffd600" stroke="white" stroke-width="1.5"/>
+          </svg>
+          <div style="margin-top:10px;">
+            <div style="font-weight:900; color:#c62828; font-size:1rem;">ハイブロック</div>
+            <p style="font-size:0.8rem; color:var(--text-mid); margin-top:4px; line-height:1.6;">相手陣地でプレス。高い位置で奪えば即ゴールチャンス。運動量・連動が要求される。リバプール、マンCが代表例。</p>
+          </div>
+        </div>
+        <!-- ミッドブロック -->
+        <div style="text-align:center;">
+          <svg viewBox="0 0 170 240" width="170" style="display:block; margin:0 auto;">
+            <rect width="170" height="240" fill="#1b3a1e" rx="8"/>
+            <rect x="8" y="8" width="154" height="224" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="8" y1="124" x2="162" y2="124" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="55" y="222" width="60" height="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            <!-- プレスゾーン（中央を黄色く） -->
+            <rect x="8" y="90" width="154" height="80" fill="rgba(245,166,35,0.2)" rx="4"/>
+            <text x="85" y="136" text-anchor="middle" fill="#ffd600" font-size="10" font-weight="bold" font-family="sans-serif">中盤で奪う</text>
+            <!-- 守備ライン（中央） -->
+            <circle cx="38" cy="160" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="68" cy="156" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="102" cy="156" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="132" cy="160" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="55" cy="112" r="10" fill="#42a5f5" stroke="white" stroke-width="1.5"/>
+            <circle cx="85" cy="106" r="10" fill="#42a5f5" stroke="white" stroke-width="1.5"/>
+            <circle cx="115" cy="112" r="10" fill="#42a5f5" stroke="white" stroke-width="1.5"/>
+            <circle cx="85" cy="210" r="10" fill="#ffd600" stroke="white" stroke-width="1.5"/>
+          </svg>
+          <div style="margin-top:10px;">
+            <div style="font-weight:900; color:#f5a623; font-size:1rem;">ミッドブロック</div>
+            <p style="font-size:0.8rem; color:var(--text-mid); margin-top:4px; line-height:1.6;">中盤ラインで陣形を整えて守る。バランス型で最も多く採用される。相手のビルドアップはある程度許容しつつ、ハーフラインより前では締める。</p>
+          </div>
+        </div>
+        <!-- ローブロック -->
+        <div style="text-align:center;">
+          <svg viewBox="0 0 170 240" width="170" style="display:block; margin:0 auto;">
+            <rect width="170" height="240" fill="#1b3a1e" rx="8"/>
+            <rect x="8" y="8" width="154" height="224" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="8" y1="124" x2="162" y2="124" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="55" y="222" width="60" height="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            <!-- 守備ゾーン（下部を青く） -->
+            <rect x="8" y="160" width="154" height="72" fill="rgba(21,101,192,0.25)" rx="4"/>
+            <text x="85" y="144" text-anchor="middle" fill="#90caf9" font-size="10" font-weight="bold" font-family="sans-serif">ゴール前を固める</text>
+            <!-- 守備ライン（低い） -->
+            <circle cx="28" cy="188" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="58" cy="185" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="85" cy="184" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="112" cy="185" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="142" cy="188" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+            <circle cx="50" cy="162" r="10" fill="#42a5f5" stroke="white" stroke-width="1.5"/>
+            <circle cx="85" cy="158" r="10" fill="#42a5f5" stroke="white" stroke-width="1.5"/>
+            <circle cx="120" cy="162" r="10" fill="#42a5f5" stroke="white" stroke-width="1.5"/>
+            <circle cx="85" cy="215" r="10" fill="#ffd600" stroke="white" stroke-width="1.5"/>
+          </svg>
+          <div style="margin-top:10px;">
+            <div style="font-weight:900; color:#1565c0; font-size:1rem;">ローブロック</div>
+            <p style="font-size:0.8rem; color:var(--text-mid); margin-top:4px; line-height:1.6;">自陣ゴール前を5〜8枚で固める超守備的戦術。「パーキングザバス」とも揶揄される。逃げ切りや格上相手に有効。カウンター一発が主な攻め手。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- プレッシングトリガー -->
+    <div class="card" style="margin-top:20px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <span style="background:#e3f2fd; color:#0d47a1; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.06em;">中〜上級コンセプト</span>
+        <h3 style="color:#0d47a1; font-size:1.05rem; font-weight:900;">プレッシングトリガー──「今だ！」の5条件</h3>
+      </div>
+      <p style="font-size:0.87rem; color:var(--text-mid); margin-bottom:16px; line-height:1.7;">
+        プレスは常にかけるわけではありません。体力を消耗するため、<strong>「奪える可能性が高い瞬間」だけに絞ってプレスをスイッチオン</strong>します。これをプレッシングトリガーと呼びます。
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px;">
+        <div style="background:#e3f2fd; border-radius:10px; padding:14px; border-left:4px solid #1565c0;">
+          <div style="font-weight:800; color:#0d47a1; margin-bottom:6px; font-size:0.9rem;">① バックパス / 横パス</div>
+          <p style="font-size:0.82rem; color:var(--text-mid); line-height:1.6;">前に進めず後ろに戻した瞬間。相手が後退しているため「前向き」で追える。</p>
+        </div>
+        <div style="background:#e3f2fd; border-radius:10px; padding:14px; border-left:4px solid #1565c0;">
+          <div style="font-weight:800; color:#0d47a1; margin-bottom:6px; font-size:0.9rem;">② 背を向けてボールを受けた</div>
+          <p style="font-size:0.82rem; color:var(--text-mid); line-height:1.6;">ボール保持者がゴールを背にしている瞬間。ターンする前に囲むと奪いやすい。</p>
+        </div>
+        <div style="background:#e3f2fd; border-radius:10px; padding:14px; border-left:4px solid #1565c0;">
+          <div style="font-weight:800; color:#0d47a1; margin-bottom:6px; font-size:0.9rem;">③ コントロールミス</div>
+          <p style="font-size:0.82rem; color:var(--text-mid); line-height:1.6;">ファーストタッチが大きくなった瞬間。一時的にボールが体から離れる隙を突く。</p>
+        </div>
+        <div style="background:#e3f2fd; border-radius:10px; padding:14px; border-left:4px solid #1565c0;">
+          <div style="font-weight:800; color:#0d47a1; margin-bottom:6px; font-size:0.9rem;">④ GKがボールを持った</div>
+          <p style="font-size:0.82rem; color:var(--text-mid); line-height:1.6;">GKはフィールドプレーヤーより技術的に劣ることが多く、ロングボール以外の選択肢も限られる。ハイプレスの定番トリガー。</p>
+        </div>
+        <div style="background:#e3f2fd; border-radius:10px; padding:14px; border-left:4px solid #1565c0;">
+          <div style="font-weight:800; color:#0d47a1; margin-bottom:6px; font-size:0.9rem;">⑤ サイドのコーナー付近</div>
+          <p style="font-size:0.82rem; color:var(--text-mid); line-height:1.6;">フィールドの端に追い込めば出口が2方向しかなくなる。コーナー付近は「袋小路」になりやすい。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 守備スタイル詳細 -->
+    <div class="card" style="margin-top:20px;">
+      <h3 style="color:#0d47a1; font-size:1.05rem; margin-bottom:16px;">🔵 守備スタイルの詳細比較</h3>
+      <div class="tactic-row">
+        <div class="tactic-box defend-box">
+          <span class="label-pill pill-defend">ゾーンディフェンス</span>
+          <h3>エリアを守る組織守備（現代の主流）</h3>
+          <p>各選手が「自分の担当ゾーン」を持ち、そこに入ってきた選手をマークする。ボールの位置に応じて全員がスライド（横移動）し、コンパクトさを保ちます。<br><br>
+          <strong>利点：</strong>連動しやすく、全体バランスが崩れにくい。<strong>弱点：</strong>ゾーンの境目（選手間のギャップ）を突かれると穴が開く。ライン間を使われたときの対応が課題。</p>
+        </div>
+        <div class="tactic-box defend-box">
+          <span class="label-pill pill-defend">マンマーク（部分的活用）</span>
+          <h3>相手エース封殺、セットプレー時など</h3>
+          <p>相手の核心選手に専任マーカーを付ける。現代では試合を通して全員にマンマークするケースは少なく、<strong>特定の局面でゾーンと組み合わせるハイブリッド</strong>が主流。<br><br>
+          コーナーキック・フリーキックのセットプレー時にはマンマーク＋ゾーンの混合システムを用いるチームが多い。</p>
+        </div>
+      </div>
+      <div class="tactic-row">
+        <div class="tactic-box defend-box">
+          <span class="label-pill pill-defend">コンパクトネス</span>
+          <h3>縦と横の「圧縮」でスペースを消す</h3>
+          <p>守備ブロックの縦幅（ラインとラインの距離）と横幅をできるだけ小さく保つ原則。<strong>縦25m・横30m程度のブロック</strong>を目安にするチームが多い。<br><br>
+          圧縮することで「ライン間のスペース」を消し、縦パスを通されにくくします。逆に圧縮しすぎるとサイドが手薄になるトレードオフがあります。</p>
+        </div>
+        <div class="tactic-box defend-box">
+          <span class="label-pill pill-defend">即時奪還（カウンタープレス）</span>
+          <h3>失った直後の5秒が勝負</h3>
+          <p>ボールを失った直後に「全員で即座に奪い返しに行く」守備移行。クロップが「世界最高のプレーメーカーはゲーゲンプレッシングだ」と語ったほど重要視されます。<br><br>
+          相手がまだボールを整理できていない「5秒以内」が最も奪いやすい。成功すれば高い位置からの攻撃につながります。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- カバーシャドー -->
+    <div class="card" style="margin-top:20px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <span style="background:#e3f2fd; color:#0d47a1; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.06em;">中〜上級コンセプト</span>
+        <h3 style="color:#0d47a1; font-size:1.05rem; font-weight:900;">カバーシャドー──パスコースを体で消す</h3>
+      </div>
+      <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+        <svg viewBox="0 0 300 200" width="300" style="flex-shrink:0; max-width:100%;">
+          <rect width="300" height="200" fill="#2e7d32" rx="8"/>
+          <!-- ボール保持者 A -->
+          <circle cx="60" cy="100" r="16" fill="#c62828" stroke="white" stroke-width="2"/>
+          <text x="60" y="96" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">相手A</text>
+          <text x="60" y="107" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">（球持）</text>
+          <!-- ボール（小円） -->
+          <circle cx="80" cy="100" r="5" fill="white"/>
+
+          <!-- パスしたい相手B -->
+          <circle cx="240" cy="60" r="14" fill="#e57373" stroke="white" stroke-width="1.5"/>
+          <text x="240" y="55" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">相手B</text>
+          <text x="240" y="66" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">（パス先）</text>
+
+          <!-- パスラインの点線 -->
+          <line x1="80" y1="98" x2="228" y2="68" stroke="rgba(255,100,100,0.5)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="148" y="72" text-anchor="middle" fill="#ef9a9a" font-size="9" font-family="sans-serif">パスしたい</text>
+
+          <!-- DF（カバーシャドー取っている） -->
+          <circle cx="148" cy="90" r="16" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <text x="148" y="86" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">守備者</text>
+          <text x="148" y="97" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">D</text>
+
+          <!-- シャドーゾーン -->
+          <polygon points="148,74 240,46 265,90 220,130 148,106" fill="rgba(21,101,192,0.25)" stroke="rgba(21,101,192,0.6)" stroke-width="1" stroke-dasharray="4,2"/>
+          <text x="210" y="95" text-anchor="middle" fill="#90caf9" font-size="10" font-weight="bold" font-family="sans-serif">シャドー</text>
+          <text x="210" y="107" text-anchor="middle" fill="#90caf9" font-size="10" font-weight="bold" font-family="sans-serif">ゾーン</text>
+
+          <!-- 別の受け手C（シャドーにいる） -->
+          <circle cx="220" cy="140" r="13" fill="#e57373" stroke="white" stroke-width="1.5"/>
+          <text x="220" y="136" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="sans-serif">相手C</text>
+          <text x="220" y="147" text-anchor="middle" fill="white" font-size="8" font-family="sans-serif">（消された）</text>
+
+          <!-- 説明 -->
+          <text x="150" y="192" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9" font-family="sans-serif">DがA→B のパスコースを体で遮断（シャドー）</text>
+        </svg>
+        <div style="flex:1; min-width:210px; font-size:0.87rem; color:var(--text-mid); line-height:1.75;">
+          <p>守備者Dが<strong>ボール保持者Aとパス受け手Bの間</strong>に立つことで、Aから見てBへの視線とパスコースを「体で覆い隠す（影にする）」テクニック。</p>
+          <br>
+          <p>ただ相手に近づくのではなく、<strong>体の向き・立ち位置でパスコースを消す</strong>のがポイント。これにより相手は使いたいコースが使えず、プレーの選択肢が制限されます。</p>
+          <br>
+          <p>ゲーゲンプレッシングや前向き守備と組み合わせると、ボールを追いながら同時にパス出口を消せるため、相手ビルドアップを機能不全に陥らせることができます。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- オフサイドトラップ -->
+    <div class="card" style="margin-top:20px; border-top:4px solid #1565c0;">
+      <h3 style="color:#0d47a1; margin-bottom:14px;">📐 組織的守備の仕掛け：オフサイドトラップ</h3>
+      <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+        <div style="flex:1; min-width:240px;">
+          <p style="font-size:0.88rem; color:var(--text-mid); line-height:1.75;">
+            DFライン全員が一斉に前進し、相手FWをオフサイドポジションへ追い込む組織的な守備の仕掛け。
+            <br><br>
+            <strong>オフサイドとは：</strong> パスが出た瞬間に、相手の最後尾DFより前にいることが条件（GKを除く）。成立すると間接フリーキックが与えられます。
+            <br><br>
+            <strong>現代での活用：</strong> VAR導入後は判定精度が上がり、オフサイドトラップが再評価されています。ただし「タイミング1枚」のズレで裏を取られる危険が常にあり、CB全員の阿吽の呼吸が必要。
+          </p>
+        </div>
+        <svg viewBox="0 0 280 170" width="280" style="flex-shrink:0;">
+          <rect width="280" height="170" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="55" width="16" height="60" fill="none" stroke="white" stroke-width="2"/>
+          <rect x="10" y="12" width="84" height="146" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="128" y1="10" x2="128" y2="160" stroke="#90caf9" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="128" y="8" text-anchor="middle" fill="#90caf9" font-size="9" font-family="sans-serif">DFライン</text>
+          <circle cx="128" cy="50" r="11" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+          <circle cx="128" cy="84" r="11" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+          <circle cx="128" cy="118" r="11" fill="#1565c0" stroke="white" stroke-width="1.5"/>
+          <circle cx="90" cy="72" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/>
+          <text x="90" y="76" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="sans-serif">FW</text>
+          <text x="90" y="96" text-anchor="middle" fill="#ffcdd2" font-size="9" font-family="sans-serif">オフサイド</text>
+          <circle cx="174" cy="72" r="11" fill="#e57373" stroke="white" stroke-width="1.5"/>
+          <text x="174" y="76" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="sans-serif">FW</text>
+          <text x="174" y="96" text-anchor="middle" fill="#c8e6c9" font-size="9" font-family="sans-serif">OK</text>
+          <polygon points="120,148 136,148 128,136" fill="#90caf9"/>
+          <text x="128" y="164" text-anchor="middle" fill="#90caf9" font-size="9" font-family="sans-serif">← 全員前へ</text>
+        </svg>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="col-box">
+    <span class="col-tag">📰 コラム⑤</span>
+    <h4>カテナチオの誕生と「死」──守備哲学が覇者になった時代</h4>
+    <p>
+      カテナチオの原型は1930年代のスイスで生まれた（カール・ラッパンの「ヴェルー（Verrou）」）が、世界的名声を得たのは1960年代のエレニオ・エレーラ率いる<em>グランデ・インテル</em>だ。最後尾に守備専念のリベロ、その前に4〜5人の守備陣を連ねる要塞構造で、1964・65年にチャンピオンズカップを連覇。「美しさより結果」を徹底し、ヨーロッパ中の指導者が追随した。<br><br>
+      しかしその思想は1988年、アリゴ・サッキの4バック＋フルプレッシングACミランに完膚なきまでに破壊される。さらに現代ではハイプレスとゲーゲンプレッシングが主流となり、<em>「守って待つ」という哲学は体力的・技術的に成立しにくくなった</em>。ただし試合終盤のローブロックや弱者の戦術として「守備的カウンター」の形で今も生き続けており、戦術は死なず変容するという好例でもある。
+    </p>
+  </div>
+
+  <!-- ══ 6. 現代戦術 ══ -->
+  <section id="modern">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>現代サッカーのキーコンセプト</h2>
+    </div>
+
+    <p style="color:var(--text-mid); margin-bottom:20px; font-size:0.92rem;">
+      現代サッカーでは「攻撃と守備を明確に分けない」考え方が主流です。全員が攻守両方に関わります。
+    </p>
+
+    <div class="card-grid">
+      <div class="card-sm accent">
+        <h3>⚡ トランジション（切り替え）</h3>
+        <p>ボールを失った瞬間（守備への切り替え）やボールを奪った瞬間（攻撃への切り替え）の<strong>素早い対応</strong>が試合を左右します。現代で最も重要な概念のひとつ。</p>
+      </div>
+      <div class="card-sm accent">
+        <h3>📐 スペースの管理</h3>
+        <p>攻撃では空いているスペースに走り込む。守備では逆に相手がスペースを使えないよう埋める。サッカーは「スペースの奪い合い」とも言えます。</p>
+      </div>
+      <div class="card-sm accent">
+        <h3>🔄 可変フォーメーション</h3>
+        <p>ボールを持っているときと持っていないときで、選手の並びを変える戦術。例：守備時は5-3-2、攻撃時は3-2-5に変形するなど。</p>
+      </div>
+      <div class="card-sm accent">
+        <h3>👣 偽サイドバック（インバーテッドSB）</h3>
+        <p>SBが内側に入り込んでMFの役割を担う現代的な戦術。ペップ・グアルディオラのマンチェスター・シティが広めました。</p>
+      </div>
+      <div class="card-sm accent">
+        <h3>🦅 ハーフスペース活用</h3>
+        <p>ピッチを縦5レーンに分けたとき、中央の両隣にある「ハーフスペース」は守備が手薄になりやすい。現代の攻撃的チームが積極的に活用する場所。</p>
+      </div>
+      <div class="card-sm accent">
+        <h3>📊 データ・データ分析</h3>
+        <p>現代では「xG（期待ゴール値）」「プレッシング強度」などのデータを使い、戦術を科学的に設計・改善します。IT化が進む現代サッカーの特徴。</p>
+      </div>
+    </div>
+
+    <!-- 5レーン図 -->
+    <div class="pitch-wrap" style="margin-top:24px;">
+      <h3 style="color:var(--green-dark); margin-bottom:16px; font-size:1rem;">📏 ピッチの5レーン（現代戦術の基本視点）</h3>
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" width="700">
+        <rect width="700" height="300" fill="#2e7d32" rx="10"/>
+        <rect x="20" y="20" width="660" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+
+        <!-- 5レーンの縦線 -->
+        <line x1="152" y1="20" x2="152" y2="280" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="6,4"/>
+        <line x1="284" y1="20" x2="284" y2="280" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="6,4"/>
+        <line x1="416" y1="20" x2="416" y2="280" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="6,4"/>
+        <line x1="548" y1="20" x2="548" y2="280" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="6,4"/>
+
+        <!-- レーン背景色 -->
+        <rect x="20" y="20" width="132" height="260" fill="rgba(21,101,192,0.18)"/>
+        <rect x="152" y="20" width="132" height="260" fill="rgba(245,166,35,0.18)"/>
+        <rect x="284" y="20" width="132" height="260" fill="rgba(255,255,255,0.12)"/>
+        <rect x="416" y="20" width="132" height="260" fill="rgba(245,166,35,0.18)"/>
+        <rect x="548" y="20" width="132" height="260" fill="rgba(21,101,192,0.18)"/>
+
+        <!-- ラベル -->
+        <text x="86" y="155" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="sans-serif">サイド</text>
+        <text x="86" y="170" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">ウィング</text>
+        <text x="86" y="184" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">SBが活動</text>
+
+        <text x="218" y="148" text-anchor="middle" fill="#ffd600" font-size="13" font-weight="bold" font-family="sans-serif">ハーフ</text>
+        <text x="218" y="163" text-anchor="middle" fill="#ffd600" font-size="13" font-weight="bold" font-family="sans-serif">スペース</text>
+        <text x="218" y="180" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9" font-family="sans-serif">★ 現代の激戦区</text>
+
+        <text x="350" y="148" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="sans-serif">センター</text>
+        <text x="350" y="163" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">レーン</text>
+        <text x="350" y="178" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">CF・DMFが活動</text>
+
+        <text x="482" y="148" text-anchor="middle" fill="#ffd600" font-size="13" font-weight="bold" font-family="sans-serif">ハーフ</text>
+        <text x="482" y="163" text-anchor="middle" fill="#ffd600" font-size="13" font-weight="bold" font-family="sans-serif">スペース</text>
+        <text x="482" y="180" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9" font-family="sans-serif">★ 現代の激戦区</text>
+
+        <text x="614" y="155" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="sans-serif">サイド</text>
+        <text x="614" y="170" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">ウィング</text>
+        <text x="614" y="184" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">SBが活動</text>
+
+        <text x="350" y="290" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-family="sans-serif">ピッチを縦5分割したレーン概念（攻守の基本フレームワーク）</text>
+      </svg>
+    </div>
+  </section>
+
+  <div class="col-box">
+    <span class="col-tag">📰 コラム⑥</span>
+    <h4>AIとデータがピッチを変える未来──「マネーボール革命」はサッカーを超える</h4>
+    <p>
+      2002年のMLBオークランド・アスレチックスが実践した「マネーボール（セイバーメトリクス）」からヒントを得て、サッカーのデータ革命は2010年代に加速した。現在では<em>xG（期待ゴール値）・PPDA（守備行動あたり許容パス数）・プレス強度・スプリント回数</em>など数十の指標がリアルタイムで計算され、クラブの強化・スカウティング・戦術設計に使われている。低予算のブライトン&ホーヴ・アルビオンがデータ主導で欧州舞台に進出したのは記憶に新しい。<br><br>
+      さらに次のフロンティアは<em>「AIリアルタイム戦術コーチング」</em>だ。試合中に相手の陣形変化を機械学習モデルが解析し、最適な交代・配置変更・プレッシングラインをベンチへ提案するシステムが実用化段階に入りつつある。GPSベスト・コンピュータービジョン・大規模言語モデルを組み合わせた次世代ツールの普及により、「監督の直感」と「データの論理」の境界が溶けていく──その世界はもう始まっている。
+    </p>
+  </div>
+
+  <!-- ══ 7. 今風のポジション名 ══ -->
+  <section id="pos-names">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>今風のポジション名・呼び方</h2>
+    </div>
+
+    <p style="color:var(--text-mid); margin-bottom:20px; font-size:0.92rem;">
+      実況や解説でよく聞く<strong>より細かいポジション名</strong>を解説します。GK・DF・MF・FWという大分類に対して、役割や動き方をより具体的に表した「現代風の呼び名」です。
+    </p>
+
+    <!-- ピッチ上の位置図 -->
+    <div class="pitch-wrap" style="margin-bottom:28px;">
+      <h3 style="color:var(--green-dark); margin-bottom:14px; font-size:1rem;">📍 各ポジションのおおよその位置（4-3-3ベース）</h3>
+      <svg viewBox="0 0 700 430" xmlns="http://www.w3.org/2000/svg" width="700">
+        <defs>
+          <pattern id="grass3" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="#2e7d32"/>
+            <rect width="40" height="20" fill="#33883a"/>
+          </pattern>
+        </defs>
+        <rect width="700" height="430" fill="url(#grass3)" rx="10"/>
+        <rect x="30" y="20" width="640" height="390" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <line x1="30" y1="215" x2="670" y2="215" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <circle cx="350" cy="215" r="50" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+
+        <!-- ゴール（上） -->
+        <rect x="290" y="20" width="120" height="18" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        <!-- ゴール（下） -->
+        <rect x="290" y="392" width="120" height="18" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        <!-- ペナルティエリア（上） -->
+        <rect x="200" y="20" width="300" height="80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <!-- ペナルティエリア（下） -->
+        <rect x="200" y="330" width="300" height="80" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+
+        <!-- 攻める方向ラベル -->
+        <text x="350" y="16" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">▲ 攻める方向</text>
+
+        <!-- ─── GK ─── -->
+        <circle cx="350" cy="382" r="20" fill="#ffd600" stroke="white" stroke-width="2"/>
+        <text x="350" y="387" text-anchor="middle" fill="#111" font-size="11" font-weight="900" font-family="sans-serif">GK</text>
+
+        <!-- ─── DF ─── -->
+        <!-- LSB -->
+        <circle cx="130" cy="320" r="20" fill="#1565c0" stroke="white" stroke-width="2"/>
+        <text x="130" y="318" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">サイド</text>
+        <text x="130" y="329" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">バック</text>
+        <text x="130" y="348" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-family="sans-serif">LSB</text>
+
+        <!-- CB(L) -->
+        <circle cx="265" cy="320" r="20" fill="#1565c0" stroke="white" stroke-width="2"/>
+        <text x="265" y="318" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">センター</text>
+        <text x="265" y="329" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">バック</text>
+        <text x="265" y="348" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-family="sans-serif">CB</text>
+
+        <!-- CB(R) -->
+        <circle cx="435" cy="320" r="20" fill="#1565c0" stroke="white" stroke-width="2"/>
+        <text x="435" y="318" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">センター</text>
+        <text x="435" y="329" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">バック</text>
+        <text x="435" y="348" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-family="sans-serif">CB</text>
+
+        <!-- RSB -->
+        <circle cx="570" cy="320" r="20" fill="#1565c0" stroke="white" stroke-width="2"/>
+        <text x="570" y="318" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">サイド</text>
+        <text x="570" y="329" text-anchor="middle" fill="white" font-size="9" font-weight="900" font-family="sans-serif">バック</text>
+        <text x="570" y="348" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-family="sans-serif">RSB</text>
+
+        <!-- ─── MF ─── -->
+        <!-- ボランチ（アンカー） -->
+        <circle cx="350" cy="255" r="20" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2.5"/>
+        <text x="350" y="253" text-anchor="middle" fill="#a5d6a7" font-size="10" font-weight="900" font-family="sans-serif">ボラン</text>
+        <text x="350" y="264" text-anchor="middle" fill="#a5d6a7" font-size="10" font-weight="900" font-family="sans-serif">チ</text>
+        <text x="350" y="282" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-family="sans-serif">DMF</text>
+
+        <!-- インサイドハーフ（左） -->
+        <circle cx="210" cy="225" r="20" fill="#2d8a40" stroke="white" stroke-width="2"/>
+        <text x="210" y="221" text-anchor="middle" fill="white" font-size="8.5" font-weight="900" font-family="sans-serif">インサイド</text>
+        <text x="210" y="232" text-anchor="middle" fill="white" font-size="8.5" font-weight="900" font-family="sans-serif">ハーフ</text>
+        <text x="210" y="250" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-family="sans-serif">IH (L)</text>
+
+        <!-- インサイドハーフ（右） -->
+        <circle cx="490" cy="225" r="20" fill="#2d8a40" stroke="white" stroke-width="2"/>
+        <text x="490" y="221" text-anchor="middle" fill="white" font-size="8.5" font-weight="900" font-family="sans-serif">インサイド</text>
+        <text x="490" y="232" text-anchor="middle" fill="white" font-size="8.5" font-weight="900" font-family="sans-serif">ハーフ</text>
+        <text x="490" y="250" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-family="sans-serif">IH (R)</text>
+
+        <!-- ─── FW ─── -->
+        <!-- 左ウイング -->
+        <circle cx="110" cy="140" r="20" fill="#b71c1c" stroke="#ef9a9a" stroke-width="2.5"/>
+        <text x="110" y="144" text-anchor="middle" fill="#ffcdd2" font-size="10" font-weight="900" font-family="sans-serif">ウイング</text>
+        <text x="110" y="162" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-family="sans-serif">LW</text>
+
+        <!-- CF / ストライカー -->
+        <circle cx="350" cy="110" r="20" fill="#c62828" stroke="white" stroke-width="2"/>
+        <text x="350" y="106" text-anchor="middle" fill="white" font-size="8.5" font-weight="900" font-family="sans-serif">ストライ</text>
+        <text x="350" y="117" text-anchor="middle" fill="white" font-size="8.5" font-weight="900" font-family="sans-serif">カー</text>
+        <text x="350" y="136" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-family="sans-serif">CF</text>
+
+        <!-- 右ウイング -->
+        <circle cx="590" cy="140" r="20" fill="#b71c1c" stroke="#ef9a9a" stroke-width="2.5"/>
+        <text x="590" y="144" text-anchor="middle" fill="#ffcdd2" font-size="10" font-weight="900" font-family="sans-serif">ウイング</text>
+        <text x="590" y="162" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9" font-family="sans-serif">RW</text>
+
+        <!-- ─── シャドー（3-4-2-1 時のみ表示 ─ 点線で補足） ─── -->
+        <circle cx="260" cy="140" r="16" fill="none" stroke="#ffd600" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="260" y="137" text-anchor="middle" fill="#ffd600" font-size="9" font-weight="900" font-family="sans-serif">シャドー</text>
+        <text x="260" y="149" text-anchor="middle" fill="#ffd600" font-size="8" font-family="sans-serif">（3-4-2-1）</text>
+
+        <circle cx="440" cy="140" r="16" fill="none" stroke="#ffd600" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="440" y="137" text-anchor="middle" fill="#ffd600" font-size="9" font-weight="900" font-family="sans-serif">シャドー</text>
+        <text x="440" y="149" text-anchor="middle" fill="#ffd600" font-size="8" font-family="sans-serif">（3-4-2-1）</text>
+
+        <!-- トップ下（点線） -->
+        <circle cx="350" cy="168" r="16" fill="none" stroke="#f5a623" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="350" y="165" text-anchor="middle" fill="#f5a623" font-size="9" font-weight="900" font-family="sans-serif">トップ下</text>
+        <text x="350" y="177" text-anchor="middle" fill="#f5a623" font-size="8" font-family="sans-serif">（4-2-3-1）</text>
+
+        <!-- 凡例 -->
+        <rect x="30" y="400" width="640" height="26" fill="rgba(0,0,0,0.2)" rx="4"/>
+        <circle cx="52" cy="413" r="6" fill="#c62828" stroke="white" stroke-width="1"/>
+        <text x="62" y="417" fill="white" font-size="9" font-family="sans-serif">実線：4-3-3の標準ポジション</text>
+        <circle cx="260" cy="413" r="6" fill="none" stroke="#ffd600" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="272" y="417" fill="#ffd600" font-size="9" font-family="sans-serif">点線（黄）：他フォーメーション時に登場するポジション</text>
+      </svg>
+    </div>
+
+    <!-- ポジション名カード -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:16px;">
+
+      <!-- ウイング -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #c62828;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#ffebee; color:#c62828; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">FW系</span>
+          <h3 style="font-size:1.05rem; color:#b71c1c; font-weight:900;">ウイング（WG）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          ピッチの<strong>左右の外側（サイドライン付近）</strong>を主戦場とする前線の選手。<br>
+          スピードとドリブルを武器に相手SBを1対1で抜き去り、シュートやクロスでチャンスを演出します。<br><br>
+          最近は内側に切れ込んでシュートを狙う<strong>「インバーテッドウイング（逆足ウイング）」</strong>が主流。右利きが左サイドに配置され、内側に入りながら右足でシュートするスタイル。サラー（リバプール）やロッベン（元バイエルン）が代表例です。
+        </p>
+      </div>
+
+      <!-- ボランチ -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #1b5e20;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#e8f5e9; color:#1b5e20; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">MF系</span>
+          <h3 style="font-size:1.05rem; color:#1b5e20; font-weight:900;">ボランチ</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          ポルトガル語の「volante（操舵輪）」が語源。ブラジルサッカー発祥の言葉で、<strong>守備的ミッドフィルダー（DMF）</strong>のこと。<br><br>
+          DFラインの前に位置し、相手の攻撃を摘み取りながら、自チームの攻撃の起点にもなる万能役。「チームの舵取り役」として試合全体をコントロールします。<br>
+          1枚置く場合は<strong>「アンカー」</strong>、2枚の場合は<strong>「ダブルボランチ」</strong>とも呼ばれます。
+        </p>
+      </div>
+
+      <!-- シャドー -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #f5a623;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#fff3e0; color:#e65100; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">FW/MF中間</span>
+          <h3 style="font-size:1.05rem; color:#e65100; font-weight:900;">シャドー（Shadow ST）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          主に<strong>3-4-2-1</strong>のフォーメーションで、1トップの「影」に隠れるように斜め後ろに位置する選手。<br><br>
+          前線と中盤の「あいだ」を流動的に動き、相手DFとMFの間のスペースを突くのが得意。守備では相手のビルドアップを妨害します。<br>
+          インテル・ミランやユベントスがこの形を好んで使用し、日本でも人気が高い戦術用語です。
+        </p>
+      </div>
+
+      <!-- トップ下 -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #f5a623;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#fff3e0; color:#e65100; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">MF/FW中間</span>
+          <h3 style="font-size:1.05rem; color:#e65100; font-weight:900;">トップ下（10番）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          FWの直後（真下）に位置する創造的な選手。<strong>「10番（テン）」</strong>とも呼ばれ、チームの顔ともなるポジション。<br><br>
+          パスセンスとドリブル技術でチャンスを演出しつつ、自らゴールも狙う。主に<strong>4-2-3-1</strong>の「3」の中央を担います。<br>
+          メッシ、香川真司、中村俊輔、ロナウジーニョなどが代表的な「10番タイプ」として有名です。
+        </p>
+      </div>
+
+      <!-- インサイドハーフ -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #2d8a40;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#e8f5e9; color:#1b5e20; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">MF系</span>
+          <h3 style="font-size:1.05rem; color:#1b5e20; font-weight:900;">インサイドハーフ（IH）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          主に<strong>4-3-3</strong>の中盤3枚のうち、左右の2枚を指します。センター（ボランチ）ではなく、ハーフスペースを斜めに出入りする攻撃的な動きが特徴。<br><br>
+          守備時は中盤を押し下げて守備ブロックを形成し、攻撃時はゴール前まで飛び込む運動量が求められます。<br>
+          現代で最も多用される中盤ポジション名のひとつです。
+        </p>
+      </div>
+
+      <!-- ウイングバック -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #1565c0;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#e3f2fd; color:#0d47a1; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">DF/MF中間</span>
+          <h3 style="font-size:1.05rem; color:#0d47a1; font-weight:900;">ウイングバック（WB）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          <strong>3バック（3枚のDF）</strong>を採用するチームで、左右のサイドを担当するポジション。<br><br>
+          守備時はDFとして機能し、攻撃時は一気に前線まで駆け上がってウイングのように振る舞います。上下運動の走力が非常に重要。<br>
+          3-5-2のシステムでは「5」の両端がウイングバックに当たります。
+        </p>
+      </div>
+
+      <!-- ストライカー -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #c62828;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#ffebee; color:#c62828; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">FW系</span>
+          <h3 style="font-size:1.05rem; color:#b71c1c; font-weight:900;">ストライカー（CF / 9番）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          最前線で得点を狙う選手の総称。<strong>「センターフォワード（CF）」</strong>や<strong>「9番」</strong>とも呼ばれます。<br><br>
+          シュート技術・フィジカル・ポジショニングが求められる花形ポジション。ハーランド（マンチェスター・シティ）のように高さと速さを兼ね備えるタイプが現代の主流です。<br>
+          ボールを受けて起点になる「ポストプレー」もストライカーの重要な役割です。
+        </p>
+      </div>
+
+      <!-- レジスタ -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #1b5e20;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#e8f5e9; color:#1b5e20; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">MF系</span>
+          <h3 style="font-size:1.05rem; color:#1b5e20; font-weight:900;">レジスタ（Regista）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          イタリア語で「演出家・監督」を意味する深い位置のゲームメーカー。ボランチよりも技術・視野・パス精度を重視するタイプ。<br><br>
+          後方から長短のパスで攻撃を設計し、試合のテンポを操ります。アンドレア・ピルロ（元ACミランほか）が「レジスタの教科書」として世界的に有名です。
+        </p>
+      </div>
+
+      <!-- 偽SB -->
+      <div style="background:white; border-radius:14px; padding:20px; box-shadow:0 3px 14px var(--shadow); border-top:4px solid #1565c0;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="background:#e3f2fd; color:#0d47a1; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.05em;">DF系（現代的変化）</span>
+          <h3 style="font-size:1.05rem; color:#0d47a1; font-weight:900;">偽サイドバック（インバーテッドSB）</h3>
+        </div>
+        <p style="font-size:0.87rem; color:var(--text-mid); line-height:1.7;">
+          本来は外側を担当するSBが、ボール保持中に内側（中盤）へ絞り込んでMFとして振る舞う現代戦術。<br><br>
+          ウイングがより高い・外側の位置を取れるようになり、攻撃のオプションが増えます。ペップ・グアルディオラがマンチェスター・シティで洗練させた概念で、現在は多くのトップチームが採用しています。
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 簡易まとめ表 -->
+    <div class="card" style="margin-top:28px; overflow-x:auto;">
+      <h3 style="color:var(--green-dark); margin-bottom:16px; font-size:1rem;">📋 ポジション名クイックリファレンス</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:0.85rem; min-width:480px;">
+        <thead>
+          <tr style="background:var(--green-dark); color:white;">
+            <th style="padding:10px 14px; text-align:left; border-radius:6px 0 0 0;">今風の呼び名</th>
+            <th style="padding:10px 14px; text-align:left;">略称</th>
+            <th style="padding:10px 14px; text-align:left;">大分類</th>
+            <th style="padding:10px 14px; text-align:left; border-radius:0 6px 0 0;">一言で言うと</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#f9fdf9;">
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">ストライカー</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">CF / 9番</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#ffebee; color:#c62828; font-size:0.75rem; padding:2px 7px; border-radius:10px;">FW</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">最前線の点取り屋</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">ウイング</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">LW / RW</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#ffebee; color:#c62828; font-size:0.75rem; padding:2px 7px; border-radius:10px;">FW</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">サイドから仕掛ける突破役</td>
+          </tr>
+          <tr style="background:#f9fdf9;">
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">トップ下</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">CAM / 10番</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#fff3e0; color:#e65100; font-size:0.75rem; padding:2px 7px; border-radius:10px;">MF/FW</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">FW直後でチャンスを演出</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">シャドー</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">SS</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#fff3e0; color:#e65100; font-size:0.75rem; padding:2px 7px; border-radius:10px;">MF/FW</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">1トップの斜め後ろで動く</td>
+          </tr>
+          <tr style="background:#f9fdf9;">
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">インサイドハーフ</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">IH</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#e8f5e9; color:#1b5e20; font-size:0.75rem; padding:2px 7px; border-radius:10px;">MF</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">4-3-3の左右中盤</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">ボランチ</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">DMF / Vol</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#e8f5e9; color:#1b5e20; font-size:0.75rem; padding:2px 7px; border-radius:10px;">MF</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">守備的中盤・舵取り役</td>
+          </tr>
+          <tr style="background:#f9fdf9;">
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">レジスタ</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">DLP</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#e8f5e9; color:#1b5e20; font-size:0.75rem; padding:2px 7px; border-radius:10px;">MF</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">後方からパスで試合を設計</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; font-weight:700;">ウイングバック</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-light);">WB</td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0;"><span style="background:#e3f2fd; color:#0d47a1; font-size:0.75rem; padding:2px 7px; border-radius:10px;">DF/MF</span></td>
+            <td style="padding:9px 14px; border-bottom:1px solid #e0ede0; color:var(--text-mid);">3バック時のサイド担当</td>
+          </tr>
+          <tr style="background:#f9fdf9;">
+            <td style="padding:9px 14px; font-weight:700;">偽サイドバック</td>
+            <td style="padding:9px 14px; color:var(--text-light);">Inv.SB</td>
+            <td style="padding:9px 14px;"><span style="background:#e3f2fd; color:#0d47a1; font-size:0.75rem; padding:2px 7px; border-radius:10px;">DF</span></td>
+            <td style="padding:9px 14px; color:var(--text-mid);">内側に絞ってMFを兼ねる現代SB</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <div class="col-box">
+    <span class="col-tag">📰 コラム⑦</span>
+    <h4>「ボランチ」はなぜ日本語になったのか──ブラジル人が運んできた言葉</h4>
+    <p>
+      英語圏では「DMF（Defensive Midfielder）」と呼ばれる同じポジションが、日本では<em>「ボランチ」</em>というポルトガル語で定着している。これは偶然ではない。1977年にセレソン経験者のセルジオ越後が来日し、その後1980〜90年代に日本サッカー界がブラジル人選手・コーチを大量招聘したことで、ブラジル式の戦術用語がそのまま日本語に溶け込んだのだ。「ボランチ（Volante）」はポルトガル語で「ハンドル・舵取り」を意味する。<br><br>
+      Jリーグ創設（1993年）前後には数百人規模のブラジル人選手が来日し、日本代表監督にもファルカン・パレイラ・トルシエ（フランス人だが）などが続いた。この「ブラジル経由のサッカー文化」は日本の技術的発展を加速させた一方、<em>英語圏・欧州圏の戦術論と日本の言語体系の微妙なズレ</em>も生んでいる。「ボランチ論争（守備的か万能か）」や「トップ下とシャドーの違い」をめぐる議論は今もSNSで定期的に勃発するが、それ自体が豊かな戦術文化の証明でもある。
+    </p>
+  </div>
+
+  <!-- ══ 8. 用語集 ══ -->
+  <section id="terms">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>よく使われる戦術用語集</h2>
+    </div>
+
+    <dl class="term-grid">
+      <div class="term-item">
+        <dt>🎯 ファーストタッチ</dt>
+        <dd>ボールを受けた最初の触り方。良いファーストタッチで次のプレーがスムーズになります。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🔄 ワンツーパス</dt>
+        <dd>2人でパスを交換してDFを抜く動き（壁パス）。狭いスペースを突破するのに有効。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🏃 オーバーラップ</dt>
+        <dd>味方の外側を追い越しながら前に出る走り。SBがウィングの外を駆け上がる動きが代表例。</dd>
+      </div>
+      <div class="term-item">
+        <dt>📏 コンパクト</dt>
+        <dd>チーム全体が縦にも横にも間隔を詰めて守備ブロックを形成すること。スペースを消すことが目的。</dd>
+      </div>
+      <div class="term-item">
+        <dt>⚡ ゲーゲンプレッシング</dt>
+        <dd>ボールを失った直後に即座に全員で奪い返すプレッシング（ドイツ語で「逆プレス」）。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🔺 ポジショナルプレー</dt>
+        <dd>ピッチ上の良いポジション（位置）を取り続けることで、パスコースと選択肢を常に豊富にする考え方。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🎯 xG（期待ゴール）</dt>
+        <dd>そのシュートがゴールになる確率をデータで示した指標。現代のデータ分析の代表的な数字。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🧠 アンカー</dt>
+        <dd>中盤の最後尾に1枚配置し、守備組織の基点になるポジション（ピボットともいう）。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🔄 偽9番（ファルソ・ヌエベ）</dt>
+        <dd>9番（CF）が下がってプレーし、空いた中央スペースにMFが飛び込む戦術。メッシのバルサが有名。</dd>
+      </div>
+      <div class="term-item">
+        <dt>📦 セットプレー</dt>
+        <dd>コーナーキック・フリーキック・PKなど、試合が止まった状態から再開するプレー。得点機会として重要。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🔀 ダイレクトプレー</dt>
+        <dd>ボールを止めずに1タッチで前に送るプレー。テンポを上げて相手の守備を乱すことができる。</dd>
+      </div>
+      <div class="term-item">
+        <dt>🛡️ ラインディフェンス</dt>
+        <dd>DFが横並びのラインを保ちながら守る組織守備。オフサイドトラップも含む現代守備の基本。</dd>
+      </div>
+    </dl>
+  </section>
+
+</main>
+
+<footer>
+  <p>⚽ 現代サッカー戦術ガイド &nbsp;|&nbsp; サッカーをもっと楽しむための入門書</p>
+</footer>
+
+</body>
+</html>
