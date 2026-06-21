@@ -248,12 +248,35 @@
       margin-bottom: 12px;
     }
 
+    .formation-card .idiom {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--accent-dark);
+      background: #fff3cd;
+      padding: 3px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
     .formation-card p {
       font-size: 0.84rem;
       color: var(--text-mid);
       text-align: left;
       margin-top: 12px;
       line-height: 1.6;
+    }
+
+    .formation-card .used-by {
+      font-size: 0.78rem;
+      color: var(--green-dark);
+      font-weight: 700;
+      text-align: left;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #e0e0d8;
+      line-height: 1.5;
     }
 
     /* ─── TACTICS TABLE ─── */
@@ -615,10 +638,10 @@
 
   <div class="col-box">
     <span class="col-tag">📰 コラム①</span>
-    <h4>オフサイドルール「3人の壁」から「2人」へ──1925年の大改正</h4>
+    <h4>サッカー誕生秘話──「手を使うか否か」で道を分けた一つの競技</h4>
     <p>
-      1925年以前、オフサイドは「攻撃側選手の前方に相手が<em>3人以上</em>いること」が条件だった。これを利用してニューキャッスル・ユナイテッドのDFビル・マカラキーが考案したのが「3人オフサイドトラップ」。DFがわずか3人前に出るだけで相手FWを根こそぎ封殺できたため、1920年代のイングランドは0-0や1-0ゲームが続出し、観客数が激減した。<br><br>
-      危機感を持ったFAは1925年にルールを「<em>2人以上</em>」へ改正。翌シーズンのリーグ総得点は前年比約43%増という劇的な変化をもたらした。この改正に最初に対応したのがアーセナル監督ハーバート・チャップマンで、彼はCBを1枚前に出して「WMフォーメーション」を発明した。現代フォーメーション史は、1つのルール改正から始まっている。
+      19世紀前半のイギリスでは、「フットボール」という名のもとに学校ごとバラバラのルールで球技が行われていた。ラグビー校では手でボールを抱えて走り、イートン校では足だけで蹴る。統一されたルールはどこにも存在しなかった。<br><br>
+      転機が訪れたのは1863年。ロンドンのパブ「フリーメイソンズ・タバン」に集まったクラブ代表たちが<em>フットボール・アソシエーション（FA）</em>を設立し、統一ルールの制定に乗り出す。最大の争点は「手を使ってよいか」。激しい議論の末、手を使いたい一派は離脱して独自に<em>ラグビーフットボール</em>を確立。残った「足だけ」派が定めたルールこそが、現在のサッカー（Association football、略してassoc→soccer）の原点となった。たった一つの分岐点から、世界で最も愛される2つの球技が生まれたのだ。
     </p>
   </div>
 
@@ -767,6 +790,7 @@
       <!-- 4-4-2 -->
       <div class="formation-card">
         <h3>4-4-2</h3>
+        <div class="idiom">質実剛健</div>
         <div class="tag">最も基本的なフォーメーション</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -793,11 +817,13 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-4-2</text>
         </svg>
         <p>バランスが良く守備も攻撃も安定。2トップでゴールを狙いながら、中盤4人が幅広くカバーします。入門者にも理解しやすい陣形。</p>
+        <div class="used-by">🌍 主な使用例：プレミアリーグの伝統的クラブ、レスター（2015-16優勝時）</div>
       </div>
 
       <!-- 4-3-3 -->
       <div class="formation-card">
         <h3>4-3-3</h3>
+        <div class="idiom">変幻自在</div>
         <div class="tag">攻撃的なスタンダード陣形</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -824,11 +850,13 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-3-3</text>
         </svg>
         <p>バルセロナやリバプールが愛用。両ウィングが幅を取り、中盤3人でボールを支配します。攻撃力が高く、現代で最もポピュラーな陣形のひとつ。</p>
+        <div class="used-by">🌍 主な使用例：バルセロナ、リヴァプール（クロップ時代）、アーセナル</div>
       </div>
 
       <!-- 3-5-2 -->
       <div class="formation-card">
         <h3>3-5-2</h3>
+        <div class="idiom">縦横無尽</div>
         <div class="tag">サイドを制圧する可変陣形</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -855,6 +883,7 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">3-5-2</text>
         </svg>
         <p>ウィングバック（WB）がサイドを上下運動しながら攻守両面をカバー。3バックの安定感と5中盤の支配力を両立します。インテルやユベントスが得意とする陣形。</p>
+        <div class="used-by">🌍 主な使用例：インテル（コンテ・インザーギ時代）、ユヴェントス</div>
       </div>
 
     </div>
@@ -866,6 +895,7 @@
       <!-- 4-2-3-1 -->
       <div class="formation-card">
         <h3>4-2-3-1</h3>
+        <div class="idiom">攻守一体</div>
         <div class="tag">世界で最も使われる現代型陣形</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -893,11 +923,13 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-2-3-1</text>
         </svg>
         <p>ダブルボランチ（緑濃）で中盤を守りながら、トップ下（橙）と両ウイングが攻撃を担う。守備の安定と攻撃力を高次元で両立。2010年代に世界中のクラブ・代表が採用した最もポピュラーな現代型フォーメーション。</p>
+        <div class="used-by">🌍 主な使用例：ドイツ代表（2014年W杯優勝時）、レアル・マドリード</div>
       </div>
 
       <!-- 4-1-4-1 -->
       <div class="formation-card">
         <h3>4-1-4-1</h3>
+        <div class="idiom">鉄壁布陣</div>
         <div class="tag">堅牢なブロックで守るカウンター型</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -925,11 +957,13 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-1-4-1</text>
         </svg>
         <p>1枚のアンカー（ボランチ）がDFの前に立ち、広大なスペースをカバー。中盤4枚が横に広いブロックを形成して守りを固める守備的な陣形。1トップへのカウンターが主な攻め手。</p>
+        <div class="used-by">🌍 主な使用例：格上との対戦時の守備的セットアップ全般（欧州中堅クラブに多い）</div>
       </div>
 
       <!-- 4-4-2 ダイヤモンド -->
       <div class="formation-card">
         <h3>4-4-2 ダイヤモンド</h3>
+        <div class="idiom">疾風怒濤</div>
         <div class="tag">中盤を菱形に並べる変形4-4-2</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -959,11 +993,13 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-4-2 ◆</text>
         </svg>
         <p>通常の横並び4-4-2と違い、中盤4人を菱形（◆）に配置。底にボランチ、頂点にトップ下（橙）を置く。中央支配力が高い一方、サイドのカバーが手薄になりやすいのが弱点。</p>
+        <div class="used-by">🌍 主な使用例：アタランタ、インテル（コンテ時代の一部試合）</div>
       </div>
 
       <!-- 3-4-3 -->
       <div class="formation-card">
         <h3>3-4-3</h3>
+        <div class="idiom">八面六臂</div>
         <div class="tag">超攻撃的な3バック</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -990,11 +1026,13 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">3-4-3</text>
         </svg>
         <p>3バックを採用しながら前線に3枚を並べる超攻撃的な陣形。両端のMF（薄緑枠）がウイングバック兼任でサイドを制圧。グアルディオラ時代のバルサや現代のチェルシーが使用。</p>
+        <div class="used-by">🌍 主な使用例：チェルシー（コンテ時代）、バイエルン（一部試合）</div>
       </div>
 
       <!-- 5-3-2 -->
       <div class="formation-card">
         <h3>5-3-2</h3>
+        <div class="idiom">堅守速攻</div>
         <div class="tag">守備最優先・堅守カウンター型</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -1021,11 +1059,13 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">5-3-2</text>
         </svg>
         <p>5枚のDFで自陣を固め、少ない人数で速攻を仕掛ける守備重視の陣形。3-5-2の守備時の形とも近い。リードを守り切りたい試合終盤や格上チームと対戦する際にとられることが多い。</p>
+        <div class="used-by">🌍 主な使用例：格上チームとの対戦時の守備固め全般（イタリア中堅クラブに多い）</div>
       </div>
 
       <!-- 4-3-2-1（クリスマスツリー） -->
       <div class="formation-card">
         <h3>4-3-2-1</h3>
+        <div class="idiom">一網打尽</div>
         <div class="tag">クリスマスツリー型・崩しの職人陣形</div>
         <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
           <rect width="200" height="280" fill="#2e7d32" rx="8"/>
@@ -1053,6 +1093,74 @@
           <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">4-3-2-1 🎄</text>
         </svg>
         <p>上から見た形がクリスマスツリーに見えることから「クリスマスツリー」とも呼ばれる。1トップの両脇にシャドー2枚（橙）を配置し、中盤3枚が守備を支える。90年代〜2000年代のACミランが得意とした。</p>
+        <div class="used-by">🌍 主な使用例：ACミラン（90年代〜2000年代）</div>
+      </div>
+
+      <!-- 3-4-2-1 -->
+      <div class="formation-card">
+        <h3>3-4-2-1</h3>
+        <div class="idiom">神出鬼没</div>
+        <div class="tag">2シャドーが流動的に崩す現代型3バック</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x3 -->
+          <circle cx="55" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="205" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="145" cy="210" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- MF x4（WB含む） -->
+          <circle cx="26" cy="165" r="12" fill="#2d8a40" stroke="#a5d6a7" stroke-width="2"/>
+          <circle cx="72" cy="158" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="128" cy="158" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="174" cy="165" r="12" fill="#2d8a40" stroke="#a5d6a7" stroke-width="2"/>
+          <!-- シャドー x2 -->
+          <circle cx="68" cy="110" r="12" fill="#f5a623" stroke="white" stroke-width="2"/>
+          <circle cx="132" cy="110" r="12" fill="#f5a623" stroke="white" stroke-width="2"/>
+          <!-- FW x1 -->
+          <circle cx="100" cy="65" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">3-4-2-1</text>
+        </svg>
+        <p>3バックで後方を安定させつつ、1トップの脇に2枚のシャドー（橙）を置いて崩しを狙う現代的な陣形。シャドーがハーフスペースを自由に動き回り、相手のマークを混乱させる。ウイングバック（薄緑枠）が幅を担当。</p>
+        <div class="used-by">🌍 主な使用例：サッカー日本代表（森保ジャパン）、ASローマ（モウリーニョ時代）</div>
+      </div>
+
+      <!-- 3-1-4-2 -->
+      <div class="formation-card">
+        <h3>3-1-4-2</h3>
+        <div class="tag">アンカー1枚で前から人を捕まえる猛プレス型</div>
+        <svg viewBox="0 0 200 280" width="180" style="margin:0 auto; display:block;">
+          <rect width="200" height="280" fill="#2e7d32" rx="8"/>
+          <rect x="10" y="10" width="180" height="260" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="145" x2="190" y2="145" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- GK -->
+          <circle cx="100" cy="250" r="12" fill="#ffd600" stroke="white" stroke-width="2"/>
+          <text x="100" y="255" text-anchor="middle" fill="#111" font-size="8" font-weight="bold" font-family="sans-serif">GK</text>
+          <!-- DF x3 -->
+          <circle cx="55" cy="212" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="100" cy="207" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <circle cx="145" cy="212" r="12" fill="#1565c0" stroke="white" stroke-width="2"/>
+          <!-- アンカー x1 -->
+          <circle cx="100" cy="170" r="12" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2"/>
+          <!-- MF x4 -->
+          <circle cx="26" cy="135" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="72" cy="128" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="128" cy="128" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <circle cx="174" cy="135" r="12" fill="#2d8a40" stroke="white" stroke-width="2"/>
+          <!-- FW x2 -->
+          <circle cx="72" cy="78" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <circle cx="128" cy="78" r="12" fill="#c62828" stroke="white" stroke-width="2"/>
+          <!-- ゴール -->
+          <rect x="65" y="12" width="70" height="14" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="100" y="275" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8" font-family="sans-serif">3-1-4-2</text>
+        </svg>
+        <p>アンカー1枚（濃緑）が最終ラインの前で唯一の盾となり、残り全員が前線で人につくマンツーマン色の強いプレッシングを仕掛ける超攻撃的・超ハイリスクな陣形。ボールを失った瞬間から全員で奪い返しに行く。</p>
+        <div class="used-by">🌍 主な使用例：アタランタ（ガスペリーニ監督）</div>
       </div>
 
     </div>
@@ -1060,10 +1168,10 @@
 
   <div class="col-box">
     <span class="col-tag">📰 コラム③</span>
-    <h4>アリゴ・サッキが「カテナチオ」を葬った夜──4バック革命の誕生</h4>
+    <h4>オフサイドルール「3人の壁」から「2人」へ──1925年の大改正とフォーメーションの誕生</h4>
     <p>
-      1980年代後半まで、イタリア守備の聖典は<em>カテナチオ</em>（鎖の意）だった。最後尾に「リベロ（自由人）」を置き、1点を守り切るこの哲学で、エレニオ・エレーラのインテルは1964〜65年のチャンピオンズカップを連覇した。「美しく負けるより醜く勝て」はイタリア守備の代名詞だった。<br><br>
-      それを真っ向から否定したのがアリゴ・サッキ。1987年にACミランの監督に就任した彼は、リベロを廃止してフラット4バック＋ゾーンディフェンスを採用。「選手は関係ない、コンセプトが大事だ」という哲学で周囲の反発を受けながらも1988-89・1989-90シーズンのチャンピオンズカップを連覇。<em>インテルを7-1で粉砕した試合</em>は「カテナチオへの死亡宣告」として語り継がれる。現代の4バック＋ゾーンDFの直接の祖先はここにある。
+      1925年以前、オフサイドは「攻撃側選手の前方に相手が<em>3人以上</em>いること」が条件だった。これを利用してニューキャッスル・ユナイテッドのDFビル・マカラキーが考案したのが「3人オフサイドトラップ」。DFがわずか3人前に出るだけで相手FWを根こそぎ封殺できたため、1920年代のイングランドは0-0や1-0ゲームが続出し、観客数が激減した。<br><br>
+      危機感を持ったFAは1925年にルールを「<em>2人以上</em>」へ改正。翌シーズンのリーグ総得点は前年比約43%増という劇的な変化をもたらした。この改正に最初に対応したのがアーセナル監督ハーバート・チャップマンで、彼はCBを1枚前に出して「WMフォーメーション」を発明。これが歴史上初めて意図的に設計された「フォーメーション」だとされる。さきほど見た4-4-2や4-3-3も、すべてこの一つのルール改正から始まった系譜の延長線上にある。
     </p>
   </div>
 
@@ -1590,10 +1698,10 @@
 
   <div class="col-box">
     <span class="col-tag">📰 コラム⑤</span>
-    <h4>カテナチオの誕生と「死」──守備哲学が覇者になった時代</h4>
+    <h4>カテナチオの誕生と「死」──守備哲学が覇者から異端児に葬られた一夜</h4>
     <p>
-      カテナチオの原型は1930年代のスイスで生まれた（カール・ラッパンの「ヴェルー（Verrou）」）が、世界的名声を得たのは1960年代のエレニオ・エレーラ率いる<em>グランデ・インテル</em>だ。最後尾に守備専念のリベロ、その前に4〜5人の守備陣を連ねる要塞構造で、1964・65年にチャンピオンズカップを連覇。「美しさより結果」を徹底し、ヨーロッパ中の指導者が追随した。<br><br>
-      しかしその思想は1988年、アリゴ・サッキの4バック＋フルプレッシングACミランに完膚なきまでに破壊される。さらに現代ではハイプレスとゲーゲンプレッシングが主流となり、<em>「守って待つ」という哲学は体力的・技術的に成立しにくくなった</em>。ただし試合終盤のローブロックや弱者の戦術として「守備的カウンター」の形で今も生き続けており、戦術は死なず変容するという好例でもある。
+      カテナチオ（鎖の意）の原型は1930年代のスイスで生まれた（カール・ラッパンの「ヴェルー（Verrou）」）が、世界的名声を得たのは1960年代、エレニオ・エレーラ率いる<em>グランデ・インテル</em>だ。最後尾に守備専念の「リベロ（自由人）」を置き、その前に4〜5人の守備陣を連ねる要塞構造で1964・65年にチャンピオンズカップを連覇。「美しく負けるより醜く勝て」を地で行くこの哲学に、ヨーロッパ中の指導者が追随した。<br><br>
+      その絶対王者に終止符を打ったのが、1987年にACミラン監督に就任したアリゴ・サッキ。リベロを廃止し、フラット4バック＋ゾーンディフェンスを導入。「選手は関係ない、コンセプトが大事だ」という哲学で周囲の反発を受けながらも1988-89・1989-90シーズンのチャンピオンズカップを連覇し、<em>インテルを7-1で粉砕した試合</em>は「カテナチオへの死亡宣告」として語り継がれる。現代の4バック＋ゾーンDF、そしてこのページで紹介したハイプレス・ミドルブロックの直接の祖先はここにある。とはいえカテナチオの精神は完全には死なず、試合終盤のローブロックや弱者の戦術として今も生き続けている──戦術は死なず、変容するのだ。
     </p>
   </div>
 
