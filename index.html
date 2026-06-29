@@ -220,6 +220,71 @@
       margin: 0 auto;
     }
 
+    /* ─── 3サード ─── */
+    .thirds-block {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 20px var(--shadow);
+      margin-bottom: 48px;
+    }
+    .thirds-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--green-dark);
+      background: var(--green-pale);
+      border: 1px solid var(--green-light);
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .thirds-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--green-dark);
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 4px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .thirds-desc {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+    .thirds-desc strong { color: var(--green-dark); font-weight: 800; }
+    .thirds-layout { display: flex; gap: 24px; align-items: flex-start; }
+    .thirds-pitch  { flex-shrink: 0; }
+    .thirds-cards  { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .third-card {
+      border-radius: 12px;
+      padding: 14px 16px;
+      border-left: 4px solid;
+    }
+    .third-card.third-attack  { background: #fff5f5; border-color: #dc2626; }
+    .third-card.third-middle  { background: #fffbeb; border-color: #d97706; }
+    .third-card.third-defense { background: #eff6ff; border-color: #2563eb; }
+    .third-card-header { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .third-card h3  { font-size: 0.93rem; font-weight: 900; margin: 0; }
+    .third-card.third-attack  h3 { color: #dc2626; }
+    .third-card.third-middle  h3 { color: #d97706; }
+    .third-card.third-defense h3 { color: #2563eb; }
+    .third-card small { font-size: 0.72rem; color: var(--text-light); font-weight: 600; }
+    .third-card p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.7; margin: 0 0 8px; }
+    .third-keywords { display: flex; flex-wrap: wrap; gap: 5px; }
+    .third-keyword  { font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .third-attack  .third-keyword { background: #fee2e2; color: #b91c1c; }
+    .third-middle  .third-keyword { background: #fef3c7; color: #92400e; }
+    .third-defense .third-keyword { background: #dbeafe; color: #1d4ed8; }
+    @media (max-width: 640px) {
+      .thirds-layout { flex-direction: column; align-items: center; }
+      .thirds-cards  { width: 100%; }
+    }
+
     /* ─── FORMATION GRID ─── */
     .formation-grid {
       display: grid;
@@ -772,6 +837,103 @@
       かつてサッカーの背番号は選手個人ではなく<em>ポジションに割り当てられていた</em>。GKが1番、右CBが2番、左CBが3番、右ハーフが4番……と続き、センターフォワードが9番、インサイドライト（攻撃的MF右）が10番、インサイドレフトが11番。選手は試合ごとに役割に対応した番号を着用した。<br><br>
       このため今も「10番＝チームの顔」「9番＝ストライカー」というイメージが世界共通で残っている。1993年に始まったプレミアリーグが通し番号制（1〜25番の固定登録）を採用したのが転換点で、以後「背番号と役割の分離」が進んだ。メッシが<em>10番</em>、ロナウドが<em>7番</em>にこだわるのも、この歴史的重みへの敬意と見ることができる。
     </p>
+  </div>
+
+  <!-- ── ピッチを3つのゾーンで読む ── -->
+  <div class="thirds-block">
+    <div class="thirds-intro">
+      <span class="thirds-tag">⚽ ZONE GUIDE</span>
+      <h2 class="thirds-title">ピッチを"3つのゾーン"で読む</h2>
+      <p class="thirds-desc">
+        現代サッカーの解説でよく登場する<strong>「○○サード」</strong>という表現。ピッチを縦に3等分したエリアを指し、どのゾーンで何が起きているかを論理的に整理するための言葉だ。「ディフェンシブサードでのミスが失点を招いた」──この一言が瞬時に浮かぶようになると、試合観戦の見え方が変わる。
+      </p>
+    </div>
+
+    <div class="thirds-layout">
+      <!-- ピッチ図 -->
+      <div class="thirds-pitch">
+        <svg viewBox="0 0 200 320" width="200" style="display:block;max-width:100%;">
+          <!-- フィールド base -->
+          <rect x="10" y="10" width="180" height="300" fill="#3a8a3a"/>
+          <!-- ゾーン色オーバーレイ -->
+          <rect x="10" y="10"  width="180" height="100" fill="rgba(220,38,38,0.35)"/>
+          <rect x="10" y="110" width="180" height="100" fill="rgba(217,119,6,0.30)"/>
+          <rect x="10" y="210" width="180" height="100" fill="rgba(37,99,235,0.35)"/>
+          <!-- 外枠 -->
+          <rect x="10" y="10" width="180" height="300" fill="none" stroke="white" stroke-width="2"/>
+          <!-- ハーフウェイライン -->
+          <line x1="10" y1="160" x2="190" y2="160" stroke="white" stroke-width="1.2" opacity="0.45"/>
+          <!-- ゾーン境界（破線） -->
+          <line x1="10" y1="110" x2="190" y2="110" stroke="white" stroke-width="1.8" stroke-dasharray="7,4"/>
+          <line x1="10" y1="210" x2="190" y2="210" stroke="white" stroke-width="1.8" stroke-dasharray="7,4"/>
+          <!-- 上ペナルティエリア -->
+          <rect x="58" y="10" width="84" height="36" fill="none" stroke="white" stroke-width="1" opacity="0.55"/>
+          <rect x="76" y="10" width="48" height="15" fill="none" stroke="white" stroke-width="1" opacity="0.55"/>
+          <!-- 上ゴール -->
+          <rect x="82" y="3" width="36" height="8" fill="rgba(255,255,255,0.55)" stroke="white" stroke-width="1.2" rx="1"/>
+          <!-- 下ペナルティエリア -->
+          <rect x="58" y="274" width="84" height="36" fill="none" stroke="white" stroke-width="1" opacity="0.55"/>
+          <rect x="76" y="295" width="48" height="15" fill="none" stroke="white" stroke-width="1" opacity="0.55"/>
+          <!-- 下ゴール -->
+          <rect x="82" y="309" width="36" height="8" fill="rgba(255,255,255,0.55)" stroke="white" stroke-width="1.2" rx="1"/>
+          <!-- PK スポット -->
+          <circle cx="100" cy="36"  r="2" fill="white" opacity="0.7"/>
+          <circle cx="100" cy="284" r="2" fill="white" opacity="0.7"/>
+          <!-- ゾーンラベル -->
+          <text x="100" y="63"  text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">アタッキングサード</text>
+          <text x="100" y="78"  text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9" font-family="sans-serif">Attacking Third</text>
+          <text x="100" y="157" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">ミドルサード</text>
+          <text x="100" y="172" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9" font-family="sans-serif">Middle Third</text>
+          <text x="100" y="250" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">ディフェンシブサード</text>
+          <text x="100" y="265" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9" font-family="sans-serif">Defensive Third</text>
+        </svg>
+      </div>
+
+      <!-- ゾーン説明カード -->
+      <div class="thirds-cards">
+        <div class="third-card third-attack">
+          <div class="third-card-header">
+            <h3>🔴 アタッキングサード</h3>
+            <small>Attacking Third</small>
+          </div>
+          <p>相手ゴール付近の3分の1エリア。シュート・クロス・スルーパスなど<strong style="color:#b91c1c;">得点に直結するプレーが生まれる場所</strong>で、FWとウイングが主役。「最後の崩し」をどう設計するかが監督の腕の見せどころ。</p>
+          <div class="third-keywords">
+            <span class="third-keyword">シュート</span>
+            <span class="third-keyword">クロス</span>
+            <span class="third-keyword">ファイナルサード</span>
+            <span class="third-keyword">崩し・決定力</span>
+          </div>
+        </div>
+
+        <div class="third-card third-middle">
+          <div class="third-card-header">
+            <h3>🟡 ミドルサード</h3>
+            <small>Middle Third</small>
+          </div>
+          <p>ハーフウェイライン周辺の中央エリア。<strong style="color:#92400e;">試合の主導権を握る「戦場」</strong>で、プレスの発動点・ビルドアップの中継点・攻守の切替（トランジション）が集中する。ボランチとセントラルMFがここを支配できるかが勝敗を分ける。</p>
+          <div class="third-keywords">
+            <span class="third-keyword">プレス</span>
+            <span class="third-keyword">トランジション</span>
+            <span class="third-keyword">ポゼッション</span>
+            <span class="third-keyword">ライン間</span>
+          </div>
+        </div>
+
+        <div class="third-card third-defense">
+          <div class="third-card-header">
+            <h3>🔵 ディフェンシブサード</h3>
+            <small>Defensive Third</small>
+          </div>
+          <p>自陣ゴール付近の3分の1エリア。<strong style="color:#1d4ed8;">ここでのミスは即失点につながる</strong>ため、GKとCBが主導し、組織的な守備ブロックを形成する。現代の低ブロックチームがプレスの罠を仕掛ける場所でもある。</p>
+          <div class="third-keywords">
+            <span class="third-keyword">守備ブロック</span>
+            <span class="third-keyword">クリア</span>
+            <span class="third-keyword">コンパクト</span>
+            <span class="third-keyword">カバーシャドウ</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ══ 3. フォーメーション ══ -->
